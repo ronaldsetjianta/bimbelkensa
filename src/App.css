@@ -1,4 +1,8 @@
-/* PERUBAHAN 1: Menambahkan impor dasar Tailwind CSS */
+/* PERUBAHAN: Menambahkan aturan font-size dasar yang konsisten */
+html {
+  font-size: 16px; /* Menetapkan basis 1rem = 16px secara universal */
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,7 +42,6 @@ body {
 }
 
 /* --- HEADER --- */
-/* PERUBAHAN 2: Warna merah dihapus, kembali ke warna asli */
 .header {
   background-color: var(--color-background);
   padding: 15px 0;
