@@ -15,10 +15,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import useScrollAnimation from "./hooks/useScrollAnimation";
 import "./App.css";
 import FisikaPage from "./fisika";
-
-// PERUBAHAN: Path import diperbarui
 import ListrikStatisPage from "./listrikstatis_mar25-r1";
-// PERUBAHAN: Import baru ditambahkan
 import ListrikDinamisPage from "./listrikdinamis_mar25-r1";
 
 
@@ -185,34 +182,34 @@ function HomePage() {
         <div className="container">
           <h2>Hubungi Kami</h2>
           <div className="kontak-grid">
-            <a href="https://wa.me/628123456789" target="_blank" rel="noopener noreferrer" className="kontak-item-link">
+            <a href="https://wa.me/628973866970" target="_blank" rel="noopener noreferrer" className="kontak-item-link">
               <div className="kontak-item">
                 <div className="kontak-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24" fill="var(--color-primary)"><path d="M12.0003 2C6.48625 2 2.00031 6.486 2.00031 12C2.00031 17.514 6.48625 22 12.0003 22H18.0003C19.8663 22 21.3783 20.627 21.8493 18.887L22.0003 18V12C22.0003 6.486 17.5143 2 12.0003 2ZM18.0003 20H12.0003C7.58931 20 4.00031 16.411 4.00031 12C4.00031 7.589 7.58931 4 12.0003 4C16.4113 4 20.0003 7.589 20.0003 12V18L18.0003 19.957V20ZM12.0003 16C10.8953 16 10.0003 15.104 10.0003 14V10C10.0003 8.896 10.8953 8 12.0003 8C13.1053 8 14.0003 8.896 14.0003 10V14C14.0003 15.104 13.1053 16 12.0003 16Z" /></svg>
                 </div>
-                <h3>WhatsApp Kami</h3>
-                <p>Chat langsung dengan admin kami untuk info program dan jadwal.</p>
-                <p>+62 812-3456-789</p>
+                <h3>WhatsApp</h3>
+                <p>+62 897 3866 970</p>
               </div>
             </a>
-            <a href="mailto:info@bimbelkensa.com" className="kontak-item-link">
+            <a href="mailto:bimbelkensa@gmail.com" className="kontak-item-link">
               <div className="kontak-item">
                 <div className="kontak-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24" fill="var(--color-secondary)"><path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4ZM20 6L12 11L4 6H20ZM4 18V7.38L12 12.38L20 7.38V18H4Z" /></svg>
                 </div>
                 <h3>Email</h3>
-                <p>Kirim pertanyaan formal atau permintaan penawaran di sini.</p>
-                <p>info@bimbelkensa.com</p>
+                <p>bimbelkensa@gmail.com</p>
               </div>
             </a>
-            <div className="kontak-item">
-              <div className="kontak-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24" fill="var(--color-primary)"><path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" /></svg>
+            {/* PERUBAHAN: div diubah menjadi <a> dengan link Google Maps */}
+            <a href="https://www.google.com/maps/search/?api=1&query=Kendangsari+6+No.+42,+Surabaya" target="_blank" rel="noopener noreferrer" className="kontak-item-link">
+              <div className="kontak-item">
+                <div className="kontak-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24" fill="var(--color-primary)"><path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" /></svg>
+                </div>
+                <h3>Alamat</h3>
+                <p>Kendangsari 6 No. 42, Surabaya</p>
               </div>
-              <h3>Alamat Kami</h3>
-              <p>Kunjungi pusat bimbingan belajar kami.</p>
-              <p>Jl. Pendidikan No. 10, Kota Sukses</p>
-            </div>
+            </a>
           </div>
         </div>
       </section>
@@ -230,7 +227,6 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/fisika" element={<FisikaPage />} />
-            {/* PERUBAHAN: Path route diperbarui dan route baru ditambahkan */}
             <Route path="/listrikstatis_mar25-r1" element={<ListrikStatisPage />} />
             <Route path="/listrikdinamis_mar25-r1" element={<ListrikDinamisPage />} />
             <Route path="/layanan-individu" element={<LayananIndividu />} />
