@@ -17,9 +17,10 @@
   object-fit: contain;
 }
 
+/* PERUBAHAN: Ukuran font disamakan dengan halaman materi */
 .fisika-hero h2 {
   margin: 0;
-  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-size: clamp(1.6rem, 3vw, 2rem); /* Ukuran disamakan */
   color: var(--color-dark-text);
 }
 

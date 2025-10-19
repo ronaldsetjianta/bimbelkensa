@@ -8,21 +8,18 @@ function ListrikDinamisPage() {
   const { ref: tableRef, isVisible: tableVisible } = useScrollAnimation();
   const { ref: commentRef, isVisible: commentVisible } = useScrollAnimation();
 
+  const answerKeyHTML = `
+    Kunci jawaban:<br>
+    1.&nbsp;&nbsp;2000 J<br>
+    2.&nbsp;&nbsp;10 Ω<br>
+    3.&nbsp;&nbsp;200.000.000 elektron
+  `;
+
   const [comments, setComments] = useState([
     {
       id: 1,
       author: 'Admin',
-      text: (
-        <>
-          Kunci jawaban:
-          <br />
-          1.  2000 J
-          <br />
-          2.  10 Ω
-          <br />
-          3.  200.000.000 elektron
-        </>
-      ),
+      text: answerKeyHTML,
       replies: []
     }
   ]);
@@ -75,7 +72,8 @@ function ListrikDinamisPage() {
             <h2>Listrik Dinamis <span className="materi-hero-code">MAR25-R1</span></h2>
           </div>
           <div className="back-link-container">
-            <Link to="/fisika" className="back-link">Kembali ke halaman Fisika</Link>
+            {/* PERUBAHAN: Teks link diubah */}
+            <Link to="/fisika" className="back-link">Kembali ke Latihan Soal Fisika</Link>
           </div>
         </div>
       </section>
@@ -112,7 +110,7 @@ function ListrikDinamisPage() {
           <h3>Komentar</h3>
           <form className="comment-form" onSubmit={handleCommentSubmit}>
             <textarea
-              placeholder="Tulis komentar Anda di sini..."
+              placeholder="Tulis komentar Anda di sini."
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
             ></textarea>
@@ -123,7 +121,7 @@ function ListrikDinamisPage() {
             {comments.map(comment => (
               <div key={comment.id} className="comment-item">
                 <p className="comment-author">{comment.author}</p>
-                <div className="comment-text preserve-space">{comment.text}</div>
+                <div className="comment-text" dangerouslySetInnerHTML={{ __html: comment.text }} />
                 <button className="reply-button" onClick={() => setReplyingTo(comment.id)}>Reply</button>
 
                 {replyingTo === comment.id && (
@@ -146,7 +144,7 @@ function ListrikDinamisPage() {
                     {comment.replies.map(reply => (
                       <div key={reply.id} className="reply-item">
                         <p className="comment-author">{reply.author}</p>
-                        <div className="comment-text preserve-space">{reply.text}</div>
+                        <div className="comment-text" dangerouslySetInnerHTML={{ __html: reply.text }} />
                       </div>
                     ))}
                   </div>

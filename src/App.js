@@ -57,9 +57,17 @@ function Header() {
   return (
     <header className="header">
       <div className="container">
-        <button onClick={() => goToSection("hero")} className="logo-button">
-          <img src="/images/logo.png" alt="Logo Belajar" className="logo-image" />
-        </button>
+        <div className="logo-group">
+          <button onClick={() => goToSection("hero")} className="logo-text-button">
+            <span className="logo-text-left">Bimbel</span>
+          </button>
+          <button onClick={() => goToSection("hero")} className="logo-button">
+            <img src="/images/logo.png" alt="Logo Belajar" className="logo-image" />
+          </button>
+          <button onClick={() => goToSection("hero")} className="logo-text-button">
+            <span className="logo-text-right">Kensa</span>
+          </button>
+        </div>
         <nav>
           <button onClick={() => goToSection("hero")}>Beranda</button>
           <div
@@ -67,16 +75,17 @@ function Header() {
             onMouseEnter={() => setIsLayananOpen(true)}
             onMouseLeave={() => setIsLayananOpen(false)}
           >
-            <button onClick={() => goToSection("layanan")}>Program</button>
+            <button onClick={() => goToSection("layanan")}>Pendaftaran</button>
             {isLayananOpen && (
               <ul className="dropdown-menu">
-                <li><Link to="/layanan-individu">Kelas SD & SMP</Link></li>
-                <li><Link to="/layanan-perusahaan">Kelas SMA & Persiapan PTN</Link></li>
-                <li><Link to="/booking-konsultasi">Daftar & Konsultasi</Link></li>
+                <li><Link to="/layanan-individu">SD, SMP, SMA/SMK</Link></li>
+                <li><Link to="/layanan-perusahaan">Persiapan Tes Masuk Perguruan Tinggi</Link></li>
+                <li><Link to="/booking-konsultasi">Kalkulus, Fisika (Perguruan Tinggi)</Link></li>
+                <li><Link to="/booking-konsultasi">Konsultasi Tugas Akhir (Skripsi)</Link></li>
               </ul>
             )}
           </div>
-          <button onClick={() => goToSection("tentang")}>Guru Kami</button>
+          <button onClick={() => goToSection("tentang")}>Tentang Kami</button>
           <button onClick={() => goToSection("kontak")}>Hubungi Kami</button>
         </nav>
       </div>
@@ -171,9 +180,9 @@ function HomePage() {
 
       <section ref={tentangRef} id="tentang" className={`tentang ${tentangVisible ? "animate" : ""}`}>
         <div className="container">
-          <h2>Kenali Guru Kami</h2>
+          <h2>Tentang Kami</h2>
           <p>
-            Semua tutor kami adalah lulusan universitas ternama dan memiliki pengalaman bertahun-tahun dalam membimbing siswa meraih prestasi terbaik. Kami fokus pada metode pengajaran yang personal dan adaptif, memastikan setiap siswa mendapatkan perhatian penuh sesuai gaya belajarnya.
+            Bimbel Kensa adalah bimbingan belajar dengan pengajar yang memiliki pengalaman lebih dari 20 tahun dalam membimbing siswa dan mahasiswa meraih prestasi terbaik. Metode pengajaran kami personal dan adaptif, namun tetap tegas dan disiplin untuk memastikan setiap siswa dan mahasiswa mencapai potensi maksimalnya dengan daya juang yang tinggi.
           </p>
         </div>
       </section>
@@ -185,7 +194,8 @@ function HomePage() {
             <a href="https://wa.me/628973866970" target="_blank" rel="noopener noreferrer" className="kontak-item-link">
               <div className="kontak-item">
                 <div className="kontak-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24" fill="var(--color-primary)"><path d="M12.0003 2C6.48625 2 2.00031 6.486 2.00031 12C2.00031 17.514 6.48625 22 12.0003 22H18.0003C19.8663 22 21.3783 20.627 21.8493 18.887L22.0003 18V12C22.0003 6.486 17.5143 2 12.0003 2ZM18.0003 20H12.0003C7.58931 20 4.00031 16.411 4.00031 12C4.00031 7.589 7.58931 4 12.0003 4C16.4113 4 20.0003 7.589 20.0003 12V18L18.0003 19.957V20ZM12.0003 16C10.8953 16 10.0003 15.104 10.0003 14V10C10.0003 8.896 10.8953 8 12.0003 8C13.1053 8 14.0003 8.896 14.0003 10V14C14.0003 15.104 13.1053 16 12.0003 16Z" /></svg>
+                  {/* PERUBAHAN: Ikon WhatsApp dengan warna hijau langsung di SVG */}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#25D366" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
                 </div>
                 <h3>WhatsApp</h3>
                 <p>+62 897 3866 970</p>
@@ -194,17 +204,18 @@ function HomePage() {
             <a href="mailto:bimbelkensa@gmail.com" className="kontak-item-link">
               <div className="kontak-item">
                 <div className="kontak-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24" fill="var(--color-secondary)"><path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4ZM20 6L12 11L4 6H20ZM4 18V7.38L12 12.38L20 7.38V18H4Z" /></svg>
+                  {/* PERUBAHAN: Ikon SVG Gmail yang relevan */}
+                  <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6.36C43.92 37.63 46.98 31.48 46.98 24.55z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6.36c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="none" d="M0 0h48v48H0z"/></svg>
                 </div>
                 <h3>Email</h3>
                 <p>bimbelkensa@gmail.com</p>
               </div>
             </a>
-            {/* PERUBAHAN: div diubah menjadi <a> dengan link Google Maps */}
-            <a href="https://www.google.com/maps/search/?api=1&query=Kendangsari+6+No.+42,+Surabaya" target="_blank" rel="noopener noreferrer" className="kontak-item-link">
+            <a href="http://maps.google.com/?q=Kendangsari 6 No. 42, Surabaya" target="_blank" rel="noopener noreferrer" className="kontak-item-link">
               <div className="kontak-item">
                 <div className="kontak-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24" fill="var(--color-primary)"><path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" /></svg>
+                  {/* PERUBAHAN: Ikon SVG Google Maps yang relevan */}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#EA4335" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67a24 24 0 0 1-35.464 0z"/><path fill="#A60D0D" d="M192 0C85.961 0 0 85.961 0 192c0 77.413 26.97 99.031 172.268 309.67a24 24 0 0 0 35.464 0C357.03 291.031 384 269.413 384 192 384 85.961 298.039 0 192 0zM192 288a96 96 0 1 1 0-192 96 96 0 0 1 0 192z"/><circle fill="#FFFFFF" cx="192" cy="192" r="64"/></svg>
                 </div>
                 <h3>Alamat</h3>
                 <p>Kendangsari 6 No. 42, Surabaya</p>
@@ -235,7 +246,6 @@ function App() {
           </Routes>
         </main>
         <Footer />
-        <ChatBox />
       </div>
     </Router>
   );

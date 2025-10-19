@@ -8,33 +8,24 @@ function ListrikStatisPage() {
   const { ref: tableRef, isVisible: tableVisible } = useScrollAnimation();
   const { ref: commentRef, isVisible: commentVisible } = useScrollAnimation();
 
+  const answerKeyHTML = `
+    Kunci jawaban:<br>
+    1.&nbsp;&nbsp;4,05 × 10<sup>5</sup> N<br>
+    2.&nbsp;&nbsp;4 × 10<sup>-3</sup> C<br>
+    3.&nbsp;&nbsp;6 cm<br>
+    4.&nbsp;&nbsp;<sup>3</sup>&frasl;<sub>2</sub><br>
+    5.&nbsp;&nbsp;8<br>
+    6.&nbsp;&nbsp;<sup>1</sup>&frasl;<sub>4</sub><br>
+    7.&nbsp;&nbsp;3<br>
+    8.&nbsp;&nbsp;4,5 × 10<sup>5</sup> N/C<br>
+    9.&nbsp;&nbsp;5
+  `;
+
   const [comments, setComments] = useState([
     {
       id: 1,
       author: 'Admin',
-      text: (
-        <>
-          Kunci jawaban:
-          <br />
-          1.  4,05 × 10<sup>5</sup> N
-          <br />
-          2.  4 × 10<sup>-3</sup> C
-          <br />
-          3.  6 cm
-          <br />
-          4.  <sup>3</sup>&frasl;<sub>2</sub>
-          <br />
-          5.  8
-          <br />
-          6.  <sup>1</sup>&frasl;<sub>4</sub>
-          <br />
-          7.  3
-          <br />
-          8.  4,5 × 10<sup>5</sup> N/C
-          <br />
-          9.  5
-        </>
-      ),
+      text: answerKeyHTML,
       replies: []
     }
   ]);
@@ -87,7 +78,8 @@ function ListrikStatisPage() {
             <h2>Listrik Statis <span className="materi-hero-code">MAR25-R1</span></h2>
           </div>
           <div className="back-link-container">
-            <Link to="/fisika" className="back-link">Kembali ke halaman Fisika</Link>
+            {/* PERUBAHAN: Teks link diubah */}
+            <Link to="/fisika" className="back-link">Kembali ke Latihan Soal Fisika</Link>
           </div>
         </div>
       </section>
@@ -136,7 +128,6 @@ function ListrikStatisPage() {
               </tr>
               <tr>
                 <td>9</td>
-                {/* PERUBAHAN: Tanda perkalian ditambahkan */}
                 <td>Jika <i>E</i> sekarang = <sup>1</sup>&frasl;<sub>25</sub> × <i>E</i> mula-mula, maka jarak sekarang = ... × jarak mula-mula.</td>
               </tr>
             </tbody>
@@ -149,7 +140,7 @@ function ListrikStatisPage() {
           <h3>Komentar</h3>
           <form className="comment-form" onSubmit={handleCommentSubmit}>
             <textarea
-              placeholder="Tulis komentar Anda di sini..."
+              placeholder="Tulis komentar Anda di sini."
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
             ></textarea>
@@ -160,7 +151,7 @@ function ListrikStatisPage() {
             {comments.map(comment => (
               <div key={comment.id} className="comment-item">
                 <p className="comment-author">{comment.author}</p>
-                <div className="comment-text preserve-space">{comment.text}</div>
+                <div className="comment-text" dangerouslySetInnerHTML={{ __html: comment.text }} />
                 <button className="reply-button" onClick={() => setReplyingTo(comment.id)}>Reply</button>
 
                 {replyingTo === comment.id && (
@@ -183,7 +174,7 @@ function ListrikStatisPage() {
                     {comment.replies.map(reply => (
                       <div key={reply.id} className="reply-item">
                         <p className="comment-author">{reply.author}</p>
-                        <div className="comment-text preserve-space">{reply.text}</div>
+                        <div className="comment-text" dangerouslySetInnerHTML={{ __html: reply.text }} />
                       </div>
                     ))}
                   </div>
