@@ -98,10 +98,11 @@
   object-fit: contain;
 }
 
+/* PERUBAHAN: Jarak antar menu utama dirapatkan */
 .header nav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0; /* Dikecilkan dari 5px */
 }
 
 .header nav button {
@@ -206,11 +207,8 @@
 
 
 /* --- SECTIONS --- */
-section#layanan, section#tentang, section#kontak {
-  padding: 60px 0;
-}
-
 section#layanan {
+  padding: 60px 0;
   padding-top: 50px;
 }
 
@@ -331,8 +329,6 @@ section#layanan, section#kontak {
   height: 100%;
   object-fit: contain;
 }
-
-/* PERUBAHAN: Kelas spesifik untuk WhatsApp dihapus karena warna sudah di dalam SVG */
 
 .footer {
   background-color: var(--color-dark-text);
