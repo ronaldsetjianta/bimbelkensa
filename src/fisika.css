@@ -1,84 +1,218 @@
-/* --- HERO SECTION HALAMAN FISIKA --- */
-.fisika-hero {
+/* --- HERO SECTION HALAMAN MATERI --- */
+.materi-hero {
   background-color: var(--color-light-bg);
-  padding: 20px 0;
+  padding: 14px 0; /* Dikecilkan dari 20px */
   border-bottom: 1px solid #ddd;
-}
-
-.fisika-hero .container {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.fisika-hero-logo {
-  height: 120px;
-  width: auto;
-  object-fit: contain;
-}
-
-.fisika-hero h2 {
-  margin: 0;
-  font-size: clamp(2rem, 5vw, 2.8rem);
-  color: var(--color-dark-text);
-}
-
-
-/* --- DAFTAR MATERI SECTION --- */
-.daftar-materi {
-  padding: 50px 0; 
-  background-color: var(--color-background);
-}
-
-.materi-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.materi-item {
-  background-color: var(--color-background);
-  color: var(--color-text);
-  padding: 20px 25px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(14px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-
-.materi-item.animate {
+.materi-hero.animate {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* PERUBAHAN: Animasi diubah dari geser menjadi membesar */
-.materi-item:hover {
-  transform: scale(1.03); /* Efek timbul/membesar */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  border-color: var(--color-primary);
-  background-color: var(--color-secondary);
+.materi-hero .container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px; /* Dikecilkan dari 30px */
 }
 
-.materi-kode {
+.materi-hero-title-group {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Dikecilkan dari 30px */
+}
+
+.materi-hero-logo {
+  height: 80px; /* Dikecilkan dari 120px */
+  width: auto;
+  object-fit: contain;
+}
+
+.materi-hero h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--color-dark-text);
+  display: flex;
+  align-items: flex-end;
+  gap: 10px; /* Dikecilkan dari 15px */
+  flex-wrap: wrap;
+}
+
+.materi-hero-code {
   font-size: 0.9rem;
   font-weight: 400;
   color: #888;
+  background-color: #ddd;
+  padding: 3px 7px; /* Dikecilkan dari 5px 10px */
+  border-radius: 3px;
+  position: relative;
+  bottom: 0.75rem;
+}
+
+/* --- TABEL SOAL SECTION --- */
+.tabel-soal, .kolom-komentar {
+  padding: 34px 0; /* Dikecilkan dari 50px */
+  background-color: var(--color-background);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.tabel-soal.animate, .kolom-komentar.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.kolom-komentar h3 {
+  text-align: center;
+  margin-bottom: 20px; /* Dikecilkan dari 30px */
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  color: var(--color-dark-text);
+}
+
+.back-link-container {
+  text-align: right;
+  margin-bottom: 10px; /* Dikecilkan dari 15px */
+}
+
+.back-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.tabel-soal table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tabel-soal th, .tabel-soal td {
+  padding: 10px; /* Dikecilkan dari 15px */
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.tabel-soal th {
   background-color: var(--color-light-bg);
-  padding: 5px 10px;
-  border-radius: 5px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tabel-soal td:first-child {
+  text-align: center;
+  width: 54px; /* Dikecilkan dari 80px */
+  font-weight: bold;
+}
+
+/* --- KOLOM KOMENTAR --- */
+.kolom-komentar .container {
+  max-width: 800px;
+}
+
+.comment-form, .reply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 7px; /* Dikecilkan dari 10px */
+  margin-bottom: 20px; /* Dikecilkan dari 30px */
+}
+
+.comment-form textarea, .reply-form textarea {
+  width: 100%;
+  min-height: 67px; /* Dikecilkan dari 100px */
+  padding: 7px; /* Dikecilkan dari 10px */
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  resize: vertical;
+}
+
+.comment-form button, .reply-form button {
+  align-self: flex-end;
+  padding: 7px 14px; /* Dikecilkan dari 10px 20px */
+  border: none;
+  border-radius: 3px;
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.materi-item:hover .materi-kode {
-  background-color: rgba(255, 255, 255, 0.4);
+.comment-form button:hover, .reply-form button:hover {
+  background-color: #0056b3;
+}
+
+.reply-form {
+  margin-top: 10px;
+  padding-left: 14px;
+}
+.reply-form div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 7px;
+}
+.reply-form button[type="button"] {
+  background-color: #6c757d;
+}
+.reply-form button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.comment-item {
+  background: var(--color-light-bg);
+  padding: 14px;
+  border-radius: 5px;
+  border-left: 3px solid var(--color-primary);
+}
+
+.comment-author {
+  font-weight: bold;
+  margin: 0 0 3px 0;
+}
+
+.comment-text {
+  margin: 0;
+}
+
+.reply-button {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: 3px 0;
+  margin-top: 7px;
+  font-size: 0.9rem;
+}
+
+.comment-replies {
+  margin-top: 10px;
+  padding-left: 20px;
+  border-left: 2px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reply-item {
+  background: var(--color-background);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.preserve-space {
+  white-space: pre-wrap;
 }
