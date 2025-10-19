@@ -1,6 +1,6 @@
-/* PERBAIKAN: Kembali ke font-size standar */
+/* PERUBAHAN 1: Sedikit mengecilkan font dasar global */
 html {
-  font-size: 16px;
+  font-size: 15px; /* Diubah dari 16px */
 }
 
 @tailwind base;
@@ -35,8 +35,9 @@ body {
   line-height: 1.6;
 }
 
+/* PERUBAHAN 2: Memperlebar container utama */
 .container {
-  max-width: 1200px;
+  max-width: 1280px; /* Diubah dari 1200px */
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -159,8 +160,9 @@ body {
   max-width: 70%;
 }
 
+/* PERUBAHAN 3: Sedikit menyesuaikan clamp font */
 .hero h1 {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
   margin: 0;
   font-weight: 500;
   line-height: 1.4;
@@ -168,7 +170,7 @@ body {
 
 .quote-author {
   text-align: right;
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-size: clamp(0.9rem, 2vw, 1rem);
   margin: 1rem 0 0 0;
   font-style: italic;
   font-weight: 400;
@@ -190,7 +192,7 @@ section#layanan, section#kontak {
 }
 
 .container h2 {
-  font-size: clamp(2.5rem, 5vw, 3rem);
+  font-size: clamp(2.4rem, 5vw, 2.8rem);
   margin-bottom: 50px;
   color: var(--color-dark-text);
   border-bottom: 3px solid var(--color-primary);
