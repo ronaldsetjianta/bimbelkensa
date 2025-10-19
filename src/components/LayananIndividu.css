@@ -1,0 +1,66 @@
+/* Styling umum untuk semua halaman layanan */
+.layanan-page .page-hero {
+  padding: 30px 0; 
+  text-align: center;
+  border-bottom: 1px solid #EAEAEA;
+  /* --- PERUBAHAN DI SINI --- */
+  background-color: #F0EEE9; /* Warna dasar disamakan */
+  /* Pola Latar Baru: A, Y, O */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ctext x='10' y='50' font-size='35' fill='%23C7C4BB' fill-opacity='0.4' font-family='serif' transform='rotate(-15 10 50)'%3EA%3C/text%3E%3Ctext x='55' y='30' font-size='30' fill='%23C7C4BB' fill-opacity='0.4' font-family='serif' transform='rotate(20 55 30)'%3EY%3C/text%3E%3Ctext x='30' y='75' font-size='25' fill='%23C7C4BB' fill-opacity='0.4' font-family='serif' transform='rotate(5 30 75)'%3EO%3C/text%3E%3C/svg%3E");
+}
+/* --- AKHIR PERUBAHAN --- */
+.layanan-page .page-hero h1 {
+  font-size: 2.3rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.layanan-page .page-hero p {
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #555555;
+}
+.layanan-page .page-section {
+  padding: clamp(40px, 5vw, 60px) 0;
+  text-align: center;
+}
+.layanan-page .services-section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.layanan-page .page-section.section-highlight {
+  background-color: #FFFFFF;
+}
+.layanan-page h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+}
+.layanan-page .description {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.layanan-page section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.layanan-page section.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+.layanan-page .section-harga h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+.layanan-page .section-harga .description {
+  font-size: 1.1rem;
+  color: #555555;
+}
+.layanan-page .section-harga .description strong {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #282828;
+  margin-left: 5px;
+}

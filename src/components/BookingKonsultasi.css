@@ -1,0 +1,185 @@
+/* Menggunakan dasar dari CSS layanan yang lain */
+@import url('./LayananIndividu.css');
+
+/* --- Gaya Formulir --- */
+.booking-form {
+  max-width: 650px;
+  margin: 30px auto 0 auto;
+  text-align: left;
+  background: #FFFFFF;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(40, 40, 40, 0.06);
+  border-top: 4px solid #282828;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #282828;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #F9F9F9;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #282828;
+  box-shadow: 0 0 0 3px rgba(40, 40, 40, 0.1);
+  background-color: #FFFFFF;
+}
+
+.form-group-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23282828%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 15px top 50%;
+  background-size: .65em auto;
+}
+
+/* --- Gaya Tombol Submit & Wrapper --- */
+.form-submit-wrapper {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-submit-wrapper .submit-btn-extreme {
+  width: auto;
+  padding: 18px 60px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background-color: #282828;
+  color: #F6F5F1;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(40, 40, 40, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.form-submit-wrapper .submit-btn-extreme:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(40, 40, 40, 0.2);
+}
+
+.form-submit-wrapper .submit-btn-extreme:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(40, 40, 40, 0.2);
+}
+
+/* --- GAYA MODAL (SOLUSI FINAL ANTI-LOMPAT) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(40, 40, 40, 0.7);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Keadaan awal: tak terlihat */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+/* Keadaan setelah animasi dipicu oleh kelas 'visible' */
+.modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  background: #FFFFFF;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-top: 4px solid #282828;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  
+  /* Keadaan awal: sedikit terangkat dan mengecil */
+  transform: scale(0.95);
+  transition: transform 0.3s ease-out;
+}
+
+/* Keadaan setelah animasi dipicu */
+.modal-overlay.visible .modal-box {
+  transform: scale(1);
+}
+
+.modal-header h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.5rem;
+  color: #282828;
+}
+
+.modal-body p {
+  margin: 0 0 25px 0;
+  line-height: 1.6;
+  color: #555555;
+}
+
+.modal-button {
+  background-color: #282828;
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+  background-color: #000000;
+}
+
+/* --- Responsif --- */
+@media (max-width: 600px) {
+  .form-group-split {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .booking-form {
+    padding: 25px;
+  }
+}

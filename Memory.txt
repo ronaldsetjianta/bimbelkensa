@@ -1,0 +1,328 @@
+Ingat semua detail berikut tentang proyek saya (Countax) dan keputusan teknis yang sudah kami buat. Saya ingin kamu menggunakan ini sebagai konteks default di sesi-sesi mendatang.
+
+1) Identitas dan tujuan
+- Nama proyek: Countax (website layanan perpajakan).
+- Tujuan: Menunjukkan layanan pajak (individu/perusahaan), menyediakan informasi, dan memudahkan booking konsultasi.
+- Stack utama: React + React Router (SPA dengan multi-route).
+- Navigasi utama di header: Beranda, Layanan, Tentang Kami, Kontak.
+
+2) Struktur rute dan komponen
+- Routes:
+  - "/" → HomePage
+  - "/layanan-individu" → LayananIndividu
+  - "/layanan-perusahaan" → LayananPerusahaan
+  - "/booking-konsultasi" → BookingKonsultasi
+- Komponen terkait layout:
+  - App (root)
+  - Header (di dalam App)
+  - Footer (di dalam App)
+  - ScrollToTop (di atas Routes)
+  - ChatBox (di root App)
+- Komponen halaman:
+  - HomePage: memiliki section id="hero", id="layanan", id="tentang", id="kontak"
+  - LayananIndividu, LayananPerusahaan, BookingKonsultasi: halaman terpisah sesuai rute.
+- Aset teks di HomePage:
+  - Logo header: "COUNTAX"
+  - CTA tombol hero: "Mulai Konsultasi"
+  - Kontak: Email "info@countax.com", Telepon "+62 897-3866-970"
+  - Judul-judul: "Layanan Kami", "Tentang Kami", "Kontak"
+- Grid layanan beranda:
+  - Tiga item: Layanan Individu → /layanan-individu, Layanan Perusahaan → /layanan-perusahaan, Booking Konsultasi → /booking-konsultasi.
+
+3) Perilaku navigasi header (sangat penting)
+- Masalah awal: Saat berada di halaman non-beranda (mis. /layanan-perusahaan), klik "Layanan" membentuk URL "/#layanan" namun tetap di route lama → tidak ada elemen dengan id target → terlihat "kosong".
+- Keputusan final:
+  - Menu header memakai <button> (bukan <a>) agar tidak reload dan bisa jalankan handler khusus.
+  - Fungsi goToSection(id):
+    - Jika location.pathname !== "/", maka navigate("/", { state: { scrollTo: id } }).
+    - Jika sudah di "/", langsung scroll: document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }).
+  - Di HomePage, useEffect memantau location.state?.scrollTo dan melakukan scroll halus setelah halaman mount.
+    - Tambahan delay setTimeout 100 ms agar DOM siap sebelum scroll.
+- Pemetaan menu → section id:
+  - "Beranda" → "hero"
+  - "Layanan" → "layanan"
+  - "Tentang Kami" → "tentang"
+  - "Kontak" → "kontak"
+
+4) Styling header dan jarak menu (sudah diperbaiki)
+- Header sticky: position: sticky; top: 0; z-index: 1000; background: #004aad; color: #fff; padding: 15px 0.
+- Container header: display: flex; justify-content: space-between; align-items: center.
+- Nav: display: flex; gap: 20px; (gap dipakai sebagai satu-satunya sumber jarak).
+- Tombol menu: background: none; border: none; color: white; font: inherit; padding: 0; cursor: pointer; text-decoration: none; transition: color 0.3s.
+- Hover tombol menu: underline + color: #dce6ff.
+- Catatan penting:
+  - Aturan lama untuk ".header nav a { margin-left: 20px; }" tidak lagi relevan untuk menu utama karena sekarang <button>. Jangan andalkan margin-left untuk jarak.
+  - Hindari duplikasi aturan untuk .header nav dan .header nav button, terutama yang sempat berada di dalam @media (max-width: 768px). Semua aturan header/nav/button harus di luar media query agar berlaku di semua ukuran layar.
+  - Jika ada struktur ul/li di sekitar nav, gunakan display: flex pada nav/ul + gap untuk konsistensi.
+
+5) Tema desain global (konsisten di semua halaman)
+- Warna utama: #004aad
+- Warna hover/variasi: #003080 (hover CTA), #dce6ff (hover link/menu)
+- Font: Arial, sans-serif
+- Padding section: kira-kira 50–60px (desktop), 30px (mobile)
+- Gaya umum: profesional, bersih, kontras jelas, CTA biru utama.
+
+6) Animasi dan interaksi (scroll-triggered)
+- Hook animasi: useScrollAnimation.js (memakai IntersectionObserver).
+  - Menambahkan class ".animate" ke elemen saat masuk viewport, lalu observer berhenti untuk elemen tersebut.
+- Level animasi di beranda:
+  - Section-level: .hero, .layanan, .tentang, .kontak → default state opacity: 0; transform: translateY(20px); dengan transition 0.6s. Saat ".animate" aktif, jadi opacity: 1; transform: translateY(0).
+  - Child-level (bertahap): pada .animate > .container > * digunakan animasi berurutan:
+    - nth-child(1): keyframes fadeSlideScale (durasi ~0.7s, delay ~0.1s)
+    - nth-child(2): keyframes fadeSlideUpChild (durasi ~0.6s, delay ~0.3s)
+    - nth-child(3): fadeSlideUpChild (delay ~0.45s)
+    - nth-child(4): fadeSlideUpChild (delay ~0.6s)
+  - Keyframes:
+    - fadeSlideScale: dari opacity 0, translateY(20px), scale(0.95) → ke opacity 1, translateY(0), scale(1).
+    - fadeSlideUpChild: dari state default ke opacity 1, translateY(0).
+- Animasi kotak layanan (card) di beranda:
+  - Link pembungkus: .layanan-item-link → default opacity: 0; translateY(20px); transisi 0.6s; saat ".animate" → opacity: 1; translateY(0).
+  - Isi card (judul, paragraf) dianimasikan bertahap:
+    - :nth-child(1) → fadeSlideScale (delay 0.1s)
+    - :nth-child(2) → fadeSlideUpChild (delay 0.25s)
+  - Hover card: transform: translateY(-5px).
+- Efek klik CTA:
+  - Tombol .cta-btn: background #004aad; hover #003080.
+
+7) CSS yang relevan (berkaitan dengan masalah yang sempat terjadi)
+- App.css mengandung:
+  - Gaya dasar (body, .container).
+  - Header sticky dan nav flex + gap 20px (pastikan berada di luar @media).
+  - Aturan lama ".header nav a" masih ada (aman, tidak mengganggu tombol).
+  - Section: .hero, .layanan, .tentang, .kontak + versi animasinya.
+  - Grid layanan: .layanan-grid (flex, gap, wrap), .layanan-item (width 250px, radius 8px).
+  - Link card: .layanan-item-link dan variasi ".animate".
+  - Keyframes fadeSlideScale dan fadeSlideUpChild.
+  - Responsif @media (<=768px): header stack vertikal; nav margin-top 10px; grid layanan jadi kolom; card width 90%.
+- Catatan kebersihan:
+  - Hilangkan aturan duplikat untuk ".header nav button" yang sebelumnya ada di dalam @media (sebabkan jarak hanya muncul di mobile).
+  - Pastikan tidak ada aturan lain yang override ".header nav { display:flex; gap:20px }".
+
+8) Detail perilaku scroll dan kompatibilitas
+- Setelah navigate("/", { state: { scrollTo: <id> } }), HomePage useEffect membaca location.state.scrollTo.
+- Delay setTimeout 100 ms sengaja agar DOM siap sebelum scrollIntoView({ behavior: "smooth" }).
+- Pastikan id pada section persis: "hero", "layanan", "tentang", "kontak".
+- ScrollToTop ada di atas Routes. Pastikan tidak mengosongkan location.state; biarkan state tetap ada agar logika scroll section berjalan. (Jika komponen ScrollToTop memanggil navigate tanpa mempertahankan state, hentikan itu.)
+- Semua klik menu header harus bekerja dari halaman mana pun, kembali ke "/", lalu scroll halus ke target.
+
+9) Elemen visual dan konten yang perlu dipertahankan
+- Logo teks: "COUNTAX" di header.
+- CTA utama: "Mulai Konsultasi" di hero.
+- Saluran kontak di beranda:
+  - Email: info@countax.com
+  - Telepon: +62 897-3866-970
+- Footer: "© 2025 Countax. Semua Hak Dilindungi."
+
+10) Halaman selain beranda
+- LayananIndividu dan BookingKonsultasi memiliki CSS terpisah (LayananIndividu.css, BookingKonsultasi.css) yang mengikuti tema global (warna, font, padding) dan juga memakai pola animasi scroll-triggered + delay bertahap.
+- LayananPerusahaan juga hadir sebagai halaman terpisah via route "/layanan-perusahaan".
+
+11) Preferensi dan keputusan desain/teknis
+- Prioritaskan pengalaman scroll yang mulus dan fokus pada section target.
+- Gunakan gap untuk spasi antar item nav, bukan margin per-item.
+- Header sticky agar menu selalu tersedia saat scroll.
+- Hindari beban animasi berlebihan: hanya aktif saat elemen masuk viewport dan berjalan sekali.
+- Konsistensi warna dan tipografi antar halaman sangat dijaga.
+
+12) Apa yang harus diingat sebagai "default behavior"
+- Saat saya bilang “menu header harus berfungsi”, maksudnya:
+  - Klik menu dari halaman mana pun → pindah ke "/" + scroll halus ke id target.
+- Saat saya bilang “animasi muncul bertahap”, maksudnya:
+  - Ada urutan animasi child dalam sebuah section dengan delay berbeda, judul memakai scale ringan.
+- Saat saya bilang “tema konsisten”, maksudnya:
+  - #004aad sebagai warna utama, #003080/#dce6ff untuk hover, font Arial, padding sesuai paltform.
+
+13) Catatan maintenance (agar tidak terulang isu)
+- Jangan menaruh aturan .header nav button di dalam @media; tempatkan global.
+- Jangan duplikasi aturan yang sama di tempat berbeda (menghindari override tak sengaja).
+- Jika suatu saat kembali ke <a> untuk menu, ingat perbedaan styling (".header nav a") dan perilaku hash vs route.
+- Pastikan ScrollToTop tidak mematahkan state scrollTo.
+
+14) Ringkas teknis App.js (inti navigasi + hero/section)
+- Header:
+  - Menggunakan useNavigate dan useLocation dari react-router-dom.
+  - goToSection("hero"|"layanan"|"tentang"|"kontak").
+  - Elemen menu adalah <button> (bukan <a>).
+- HomePage:
+  - useEffect cek location.state?.scrollTo; jika ada, cari elemen dengan id tersebut dan scrollIntoView smooth setelah delay 100 ms.
+  - Section memiliki id persis sesuai peta menu.
+  - Menggunakan beberapa ref dari useScrollAnimation() untuk memicu class .animate.
+- Footer:
+  - Teks "© 2025 Countax. Semua Hak Dilindungi."
+- Komponen lain:
+  - ChatBox dirender di App (tidak mempengaruhi navigasi).
+  - ScrollToTop ada, tetapi jangan hapus location.state.
+
+15) Harapan saat memori aktif
+- Simpan semua detail ini agar kamu:
+  - Tidak meminta ulang konteks.
+  - Tidak mengusulkan solusi yang bertentangan dengan keputusan di atas.
+  - Langsung tahu mapping id section, path, dan pola animasi saat aku minta perubahan.
+
+
+Hal-hal kecil yang sering terlewat (aku tandai agar aman)
+Mapping menu → id harus persis: hero, layanan, tentang, kontak.
+
+setTimeout 100 ms pada scroll di HomePage itu sengaja; jangan dihapus tanpa pengganti yang aman.
+
+Z-index header 1000 agar tidak tertutup konten lain.
+
+Gunakan gap, bukan margin-left, untuk spasi menu. Pastikan tidak ada aturan margin-left yang menimpa di breakpoint lain.
+
+Jika ada ul/li di nav, jadikan flex juga dan beri gap di ul, atau gunakan display: contents pada li untuk mencegah jarak ganda.
+
+Pastikan keyframes fadeSlideScale dan fadeSlideUpChild tetap ada jika kita refactor CSS.
+
+Checklist cepat untuk verifikasi proyek (sekali jalan)
+Header sticky terlihat di atas saat scroll.
+
+Menu header di desktop dan mobile jelas berjarak (nav flex + gap di luar @media).
+
+Klik “Layanan” dari /layanan-perusahaan memindahkan ke / lalu scroll ke section layanan dengan halus.
+
+Semua section beranda memunculkan animasi saat masuk viewport, child muncul bertahap.
+
+Kotak layanan di beranda muncul satu per satu dan hover naik 5px.
+
+CTA “Mulai Konsultasi” berwarna #004aad dan hover #003080.
+
+Footer menampilkan © 2025 Countax, kontak email dan telepon ada di section kontak.
+
+
+Ingat semua hal berikut tentang saya dan proyek yang sedang saya kerjakan. Gunakan ini sebagai konteks default di sesi mendatang.
+
+==================================================
+1) Identitas & Tujuan Proyek
+==================================================
+- Nama: Website **Countax**.
+- Tujuan: Menyediakan informasi layanan pajak (individu & perusahaan) dan memudahkan booking konsultasi.
+- Teknologi: React + React Router (SPA multi-route).
+- Navigasi utama: Beranda, Layanan, Tentang Kami, Kontak.
+
+==================================================
+2) Struktur Rute & Komponen
+==================================================
+- Routes:
+  "/" → HomePage
+  "/layanan-individu" → LayananIndividu
+  "/layanan-perusahaan" → LayananPerusahaan
+  "/booking-konsultasi" → BookingKonsultasi
+- Komponen layout:
+  App (root), Header, Footer, ScrollToTop, ChatBox.
+- HomePage memiliki section dengan id:
+  hero, layanan, tentang, kontak.
+- Grid layanan beranda:
+  1. Layanan Individu → /layanan-individu
+  2. Layanan Perusahaan → /layanan-perusahaan
+  3. Booking Konsultasi → /booking-konsultasi
+
+==================================================
+3) Navigasi Header – Perilaku & Logika
+==================================================
+- Masalah awal: Klik menu dari halaman lain → URL hash di route lama → halaman kosong.
+- Solusi:
+  - Menu header pakai <button> + fungsi goToSection(id).
+  - Jika bukan di "/", navigate("/", { state: { scrollTo: id } }).
+  - Jika di "/", langsung scroll ke elemen target.
+  - HomePage useEffect: cek location.state.scrollTo → scrollIntoView smooth setelah delay 100ms.
+- Mapping menu → id:
+  Beranda → hero
+  Layanan → layanan
+  Tentang Kami → tentang
+  Kontak → kontak
+
+==================================================
+4) Styling Header & Menu
+==================================================
+- Header sticky: position: sticky; top: 0; z-index: 1000; background: #004aad; padding: 15px 0.
+- Container header: flex, space-between, align-center.
+- Nav: flex, gap: 20px (jarak antar menu).
+- Tombol menu: background none, border none, color white, font inherit, padding 0, cursor pointer, hover underline + #dce6ff.
+- Catatan: Hindari margin-left manual, gunakan gap. Pastikan aturan ini global, bukan hanya di @media.
+
+==================================================
+5) Tema Desain Global
+==================================================
+- Warna utama: #004aad
+- Warna hover: #003080 (CTA), #dce6ff (link/menu)
+- Font: Arial, sans-serif
+- Padding section: 50–60px desktop, 30px mobile
+- Gaya: profesional, bersih, konsisten.
+
+==================================================
+6) Animasi & Interaksi
+==================================================
+- Hook: useScrollAnimation.js (IntersectionObserver).
+- Section-level: .hero, .layanan, .tentang, .kontak → default opacity 0, translateY(20px); saat .animate → opacity 1, translateY(0).
+- Child-level delay:
+  nth-child(1) → fadeSlideScale (delay 0.1s)
+  nth-child(2) → fadeSlideUpChild (delay 0.3s)
+  nth-child(3) → fadeSlideUpChild (delay 0.45s)
+  nth-child(4) → fadeSlideUpChild (delay 0.6s)
+- Kotak layanan:
+  .layanan-item-link default opacity 0, translateY(20px); .animate → opacity 1, translateY(0).
+  Judul card → fadeSlideScale (delay 0.1s)
+  Deskripsi card → fadeSlideUpChild (delay 0.25s)
+- Hover card: translateY(-5px).
+
+==================================================
+7) CSS & File Styling
+==================================================
+- App.css:
+  - Styling global, header sticky, nav flex + gap, section, grid layanan, animasi, keyframes.
+  - Duplikasi aturan header/nav/button dihapus.
+- LayananIndividu.css & BookingKonsultasi.css:
+  - Mengikuti tema global.
+  - Animasi scroll-triggered + delay bertahap.
+
+==================================================
+8) Snapshot UI – Struktur & Class/ID
+==================================================
+HEADER:
+<header class="header">
+  .container → logo + nav
+  Logo: "COUNTAX"
+  Nav: <button> Beranda (#hero), Layanan (#layanan), Tentang Kami (#tentang), Kontak (#kontak)
+
+HERO:
+<section id="hero" class="hero">
+  <h1>...</h1>
+  <p>...</p>
+  <button class="cta-btn">Mulai Konsultasi</button>
+
+LAYANAN:
+<section id="layanan" class="layanan">
+  <h2><b>Layanan Kami</b></h2>
+  .layanan-grid → 3 .layanan-item-link (Link ke halaman layanan)
+    .layanan-item → <h3>...</h3> <p>...</p>
+
+TENTANG:
+<section id="tentang" class="tentang">
+  <h2><b>Tentang Kami</b></h2>
+  <p>...</p>
+
+KONTAK:
+<section id="kontak" class="kontak">
+  <h2><b>Kontak</b></h2>
+  <p>Email: info@countax.com</p>
+  <p>Telepon: +62 897-3866-970</p>
+
+FOOTER:
+<footer class="footer">
+  <p>© 2025 Countax. Semua Hak Dilindungi.</p>
+
+==================================================
+9) Catatan Maintenance
+==================================================
+- Jangan taruh aturan .header nav button di dalam @media.
+- Hindari duplikasi aturan CSS.
+- Pastikan ScrollToTop tidak menghapus location.state.
+- Id section harus persis sesuai mapping menu.
+- Pertahankan keyframes fadeSlideScale & fadeSlideUpChild.
+
+==================================================
+10) Harapan Saat Memori Aktif
+==================================================
+- Simpan semua detail ini.
+- Jangan usulkan solusi yang bertentangan dengan keputusan di atas.
+- Langsung pahami mapping id, path, pola animasi, dan tema desain saat diminta perubahan.

@@ -1,0 +1,22 @@
+/* Import Google Font (Inter) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+/* Setup Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gaya Dasar Global */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px; /* Basis standar, penting untuk kalkulasi rem */
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif; /* Font yang lebih elegan */
+  background-color: #F6F5F1; /* Warna background utama */
+  color: #282828; /* Warna teks utama */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

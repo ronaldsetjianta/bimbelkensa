@@ -1,0 +1,75 @@
+/* Styling yang disalin dari LayananIndividu.css agar mandiri */
+.layanan-page .page-hero {
+  padding: 30px 0; 
+  text-align: center;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #EAEAEA;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Ctext x='15' y='40' font-size='35' fill='%23C7C4BB' fill-opacity='0.4' font-family='serif' transform='rotate(-20 15 40)'%3EC%3C/text%3E%3Ctext x='80' y='25' font-size='25' fill='%23C7C4BB' fill-opacity='0.4' font-family='serif' transform='rotate(10 80 25)'%3EO%3C/text%3E%3Ctext x='50' y='90' font-size='40' fill='%23C7C4BB' fill-opacity='0.4' font-family='serif' transform='rotate(30 50 90)'%3EU%3C/text%3E%3Ctext x='100' y='110' font-size='28' fill='%23C7C4BB' fill-opacity='0.4' font-family='serif' transform='rotate(-10 100 110)'%3EN%3C/text%3E%3Ctext x='10' y='100' font-size='22' fill='%23C7C4BB' fill-opacity='0.4' font-family='serif' transform='rotate(5 10 100)'%3ET%3C/text%3E%3Ctext x='95' y='65' font-size='32' fill='%23C7C4BB' fill-opacity='0.4' font-family='serif' transform='rotate(-35 95 65)'%3EA%3C/text%3E%3Ctext x='45' y='15' font-size='18' fill='%23C7C4BB' fill-opacity='0.4' font-family='serif' transform='rotate(25 45 15)'%3EX%3C/text%3E%3C/svg%3E");
+}
+.layanan-page .page-hero h1 {
+  font-size: 2.3rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.layanan-page .page-hero p {
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #555555;
+}
+.layanan-page .page-section {
+  padding: clamp(40px, 5vw, 60px) 0;
+  text-align: center;
+}
+.layanan-page .page-section.section-highlight {
+  background-color: #FFFFFF;
+}
+.layanan-page h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+}
+.layanan-page .description {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.layanan-page section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.layanan-page section.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- PERUBAHAN DI SINI: Menggunakan selector yang lebih akurat --- */
+.layanan-page .page-section:last-of-type h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+.layanan-page .page-section:last-of-type .description {
+  font-size: 1.1rem;
+  color: #555555;
+}
+.layanan-page .page-section:last-of-type .description strong {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #282828;
+  margin-left: 5px;
+}
+
+/* --- PERBAIKAN FINAL UNTUK JARAK VERTIKAL --- */
+
+/* Membuat jarak antar seksi layanan menjadi sangat ringkas */
+.layanan-page .company-service-section {
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+}
+
+/* Membuat seksi harga di halaman ini juga menjadi ringkas */
+.layanan-page .page-section:last-of-type {
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+}
