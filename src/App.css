@@ -1,6 +1,6 @@
-/* PERUBAHAN: Ukuran font dasar dikecilkan untuk skala global */
+/* PERBAIKAN: Kembali ke font-size standar */
 html {
-  font-size: 10.72px; /* 16px * 0.67 */
+  font-size: 16px;
 }
 
 @tailwind base;
@@ -38,13 +38,13 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 14px; /* Dikecilkan dari 20px */
+  padding: 0 20px;
 }
 
 /* --- HEADER --- */
 .header {
   background-color: var(--color-background);
-  padding: 10px 0; /* Dikecilkan dari 15px */
+  padding: 15px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -65,7 +65,7 @@ body {
 }
 
 .logo-image {
-  height: 34px; /* Dikecilkan dari 50px */
+  height: 50px;
   width: auto;
   object-fit: contain;
 }
@@ -73,13 +73,13 @@ body {
 .header nav {
   display: flex;
   align-items: center;
-  gap: 7px; /* Dikecilkan dari 10px */
+  gap: 10px;
 }
 
 .header nav button {
   background: none;
   border: none;
-  padding: 7px 10px; /* Dikecilkan dari 10px 15px */
+  padding: 10px 15px;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
@@ -101,15 +101,15 @@ body {
   top: 100%;
   left: 0;
   background-color: var(--color-background);
-  border-radius: 5px; /* Dikecilkan dari 8px */
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   list-style: none;
-  padding: 7px 0; /* Dikecilkan dari 10px */
-  margin: 7px 0 0 0;
-  width: 170px; /* Dikecilkan dari 250px */
+  padding: 10px 0;
+  margin: 10px 0 0 0;
+  width: 250px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(7px);
+  transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
 
@@ -121,7 +121,7 @@ body {
 
 .dropdown-menu li a {
   display: block;
-  padding: 8px 14px; /* Dikecilkan dari 12px 20px */
+  padding: 12px 20px;
   text-decoration: none;
   color: var(--color-text);
   font-size: 0.95rem;
@@ -143,7 +143,7 @@ body {
     rgba(255, 255, 255, 0.08) 10px,
     rgba(255, 255, 255, 0.08) 20px
   );
-  padding: 20px 0; /* Dikecilkan dari 30px */
+  padding: 30px 0;
   color: white;
   display: flex;
   align-items: center;
@@ -178,11 +178,11 @@ body {
 
 /* --- SECTIONS --- */
 section#layanan, section#kontak, section#tentang {
-  padding: 40px 0; /* Dikecilkan dari 60px */
+  padding: 60px 0;
 }
 
 section#layanan {
-  padding-top: 34px; /* Dikecilkan dari 50px */
+  padding-top: 50px;
 }
 
 section#layanan, section#kontak {
@@ -191,10 +191,11 @@ section#layanan, section#kontak {
 
 .container h2 {
   font-size: clamp(2.5rem, 5vw, 3rem);
-  margin-bottom: 34px; /* Dikecilkan dari 50px */
-  border-bottom: 2px solid var(--color-primary); /* Dikecilkan dari 3px */
+  margin-bottom: 50px;
+  color: var(--color-dark-text);
+  border-bottom: 3px solid var(--color-primary);
   display: inline-block;
-  padding-bottom: 7px; /* Dikecilkan dari 10px */
+  padding-bottom: 10px;
   text-align: center;
 }
 
@@ -205,14 +206,14 @@ section#layanan, section#kontak {
 .layanan-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px; /* Dikecilkan dari 30px */
+  gap: 30px;
   text-align: left;
 }
 
 .kontak-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px; /* Dikecilkan dari 30px */
+  gap: 30px;
   text-align: left;
 }
 
@@ -224,23 +225,23 @@ section#layanan, section#kontak {
 
 .layanan-item {
   background: var(--color-background);
-  padding: 14px; /* Dikecilkan dari 20px */
-  border-radius: 5px; /* Dikecilkan dari 8px */
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   aspect-ratio: 1 / 1;
-  border: 3px solid var(--color-secondary); /* Dikecilkan dari 5px */
+  border: 5px solid var(--color-secondary);
 }
 
 .kontak-item {
   background: var(--color-background);
-  padding: 17px; /* Dikecilkan dari 25px */
-  border-radius: 5px; /* Dikecilkan dari 8px */
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -250,12 +251,12 @@ section#layanan, section#kontak {
 
 .layanan-item:hover {
   transform: scale(1.03);
-  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   background-color: var(--color-secondary);
 }
 
 .layanan-item-image {
-  border-radius: 3px;
+  border-radius: 4px;
   width: 85%;
   height: 85%;
   object-fit: contain;
@@ -278,9 +279,9 @@ section#layanan, section#kontak {
     text-align: center;
 }
 .kontak-icon {
-  width: 34px; /* Dikecilkan dari 50px */
-  height: 34px;
-  margin: 0 auto 10px;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 15px;
 }
 .kontak-icon svg {
   width: 100%;
@@ -291,12 +292,12 @@ section#layanan, section#kontak {
   background-color: var(--color-dark-text);
   color: white;
   text-align: center;
-  padding: 14px 0; /* Dikecilkan dari 20px */
+  padding: 20px 0;
 }
 
 .hero, .layanan, .tentang, .kontak, .layanan-item {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 .animate {
@@ -316,10 +317,10 @@ section#layanan, section#kontak {
 @media (max-width: 768px) {
   .header .container {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
   }
   section {
-    padding: 27px 0;
+    padding: 40px 0;
   }
   .kontak-grid {
     grid-template-columns: 1fr;
