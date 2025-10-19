@@ -1,15 +1,9 @@
-/* PERUBAHAN 1: Mengembalikan font-size standar */
-html {
-  font-size: 16px;
-}
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer base {
+  html {
+    font-size: 16px;
+  }
+
   body {
-    /* PERUBAHAN 2: Menerapkan skala 67% secara global */
     zoom: 67%;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -40,7 +34,6 @@ html {
   --color-dark-text: #212529;   /* Hitam lembut (untuk judul) */
 }
 
-/* PERUBAHAN 3: Mengembalikan semua nilai ke standar 100% */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -229,6 +222,7 @@ section#layanan, section#kontak {
   display: flex;
 }
 
+/* PERUBAHAN: Menghapus aspect-ratio dan menambahkan height tetap */
 .layanan-item {
   background: var(--color-background);
   padding: 20px;
@@ -239,7 +233,8 @@ section#layanan, section#kontak {
   justify-content: center;
   align-items: center;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 180px; /* Tinggi kotak dibuat tetap */
+  /* aspect-ratio: 1 / 1; Dihapus */
   border: 5px solid var(--color-secondary);
 }
 
