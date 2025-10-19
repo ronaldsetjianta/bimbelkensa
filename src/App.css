@@ -1,3 +1,8 @@
+/* PERUBAHAN 1: Menambahkan impor dasar Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *,
 *::before,
 *::after {
@@ -33,9 +38,9 @@ body {
 }
 
 /* --- HEADER --- */
-/* PERUBAHAN DIAGNOSTIK: Latar belakang diubah menjadi merah */
+/* PERUBAHAN 2: Warna merah dihapus, kembali ke warna asli */
 .header {
-  background-color: red !important; /* Tes untuk memastikan perubahan CSS ter-deploy */
+  background-color: var(--color-background);
   padding: 15px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: sticky;
