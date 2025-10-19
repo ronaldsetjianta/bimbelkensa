@@ -74,6 +74,7 @@
 
 .back-link-container {
   text-align: right;
+  margin-bottom: 15px;
 }
 
 .back-link {
@@ -212,7 +213,6 @@
   border-radius: 8px;
 }
 
-/* PERUBAHAN: Kelas baru untuk mempertahankan spasi */
 .preserve-space {
   white-space: pre-wrap;
 }
