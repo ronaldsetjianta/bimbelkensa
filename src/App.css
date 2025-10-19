@@ -1,15 +1,8 @@
-/* --- TATA LETAK UTAMA APLIKASI --- */
-html, body, #root, .app-wrapper {
-  height: 100%;
-}
-
-.app-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.main-content {
-  flex-grow: 1;
+/* PERUBAHAN: Menambahkan aturan box-sizing universal */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 /* --- ROOT VARIABLES & GLOBAL STYLES --- */
