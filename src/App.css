@@ -98,17 +98,18 @@
   object-fit: contain;
 }
 
-/* PERUBAHAN: Jarak antar menu utama dirapatkan */
+/* PERUBAHAN: Jarak antar menu dihilangkan */
 .header nav {
   display: flex;
   align-items: center;
   gap: 0; /* Dikecilkan dari 5px */
 }
 
+/* PERUBAHAN: Padding horizontal pada tombol dikurangi */
 .header nav button {
   background: none;
   border: none;
-  padding: 10px 15px;
+  padding: 10px 8px; /* Dikecilkan dari 10px 15px */
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;

@@ -78,7 +78,6 @@ function Header() {
             <button onClick={() => goToSection("layanan")}>Pendaftaran</button>
             {isLayananOpen && (
               <ul className="dropdown-menu">
-                {/* PERUBAHAN: Tautan dinonaktifkan */}
                 <li><Link to="#" onClick={(e) => e.preventDefault()}>SD, SMP, SMA/SMK</Link></li>
                 <li><Link to="#" onClick={(e) => e.preventDefault()}>Persiapan Tes Masuk Perguruan Tinggi</Link></li>
                 <li><Link to="#" onClick={(e) => e.preventDefault()}>Kalkulus, Fisika (Perguruan Tinggi)</Link></li>
@@ -182,8 +181,9 @@ function HomePage() {
       <section ref={tentangRef} id="tentang" className={`tentang ${tentangVisible ? "animate" : ""}`}>
         <div className="container">
           <h2>Tentang Kami</h2>
+          {/* PERUBAHAN: Kata "tetap" dihapus */}
           <p>
-            Bimbel Kensa adalah bimbingan belajar dengan pengajar yang memiliki pengalaman lebih dari 20 tahun dalam membimbing siswa dan mahasiswa meraih prestasi terbaik. Metode pengajaran kami personal dan adaptif, namun tetap tegas dan disiplin untuk memastikan setiap siswa dan mahasiswa mencapai potensi maksimal dengan daya juang yang tinggi.
+            Bimbel Kensa adalah bimbingan belajar dengan pengajar yang memiliki pengalaman lebih dari 20 tahun dalam membimbing siswa dan mahasiswa meraih prestasi terbaik. Metode pengajaran kami personal dan adaptif, namun tegas dan disiplin untuk memastikan setiap siswa dan mahasiswa mencapai potensi maksimal dengan daya juang yang tinggi.
           </p>
         </div>
       </section>
