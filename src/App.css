@@ -1,4 +1,3 @@
-/* PERUBAHAN: Menambahkan aturan box-sizing universal */
 *,
 *::before,
 *::after {
@@ -34,8 +33,9 @@ body {
 }
 
 /* --- HEADER --- */
+/* PERUBAHAN DIAGNOSTIK: Latar belakang diubah menjadi merah */
 .header {
-  background-color: var(--color-background);
+  background-color: red !important; /* Tes untuk memastikan perubahan CSS ter-deploy */
   padding: 15px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: sticky;
