@@ -1,16 +1,32 @@
-html {
-  font-size: 16px;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* PERUBAHAN: Membungkus gaya dasar kustom dalam @layer base */
+@layer base {
+  html {
+    font-size: 15px; /* Menetapkan basis 1rem = 15px */
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 }
+
 
 /* --- ROOT VARIABLES & GLOBAL STYLES --- */
 :root {
@@ -22,20 +38,8 @@ html {
   --color-dark-text: #212529;   /* Hitam lembut (untuk judul) */
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-background);
-  color: var(--color-text);
-  line-height: 1.6;
-}
-
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -142,7 +146,6 @@ body {
     rgba(255, 255, 255, 0.08) 10px,
     rgba(255, 255, 255, 0.08) 20px
   );
-  /* PERUBAHAN 1: Mengurangi padding vertikal agar lebih kompak */
   padding: 40px 0;
   color: white;
   display: flex;
@@ -160,7 +163,7 @@ body {
 }
 
 .hero h1 {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
   margin: 0;
   font-weight: 500;
   line-height: 1.4;
@@ -168,7 +171,7 @@ body {
 
 .quote-author {
   text-align: right;
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-size: clamp(0.9rem, 2vw, 1rem);
   margin: 1rem 0 0 0;
   font-style: italic;
   font-weight: 400;
@@ -177,7 +180,6 @@ body {
 
 
 /* --- SECTIONS --- */
-/* PERUBAHAN 2: Mengurangi padding vertikal global untuk section */
 section#layanan, section#kontak, section#tentang {
   padding: 50px 0;
 }
@@ -191,8 +193,8 @@ section#layanan, section#kontak {
 }
 
 .container h2 {
-  font-size: clamp(2.5rem, 5vw, 3rem);
-  margin-bottom: 40px; /* Sedikit dikurangi */
+  font-size: clamp(2.4rem, 5vw, 2.8rem);
+  margin-bottom: 40px;
   color: var(--color-dark-text);
   border-bottom: 3px solid var(--color-primary);
   display: inline-block;
@@ -204,20 +206,17 @@ section#layanan, section#kontak {
   border-bottom: none;
 }
 
-/* Grid untuk 6 item Layanan */
 .layanan-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* PERUBAHAN 3: Mengurangi jarak antar kotak agar lebih muat */
   gap: 20px;
   text-align: left;
 }
 
-/* Grid baru untuk 3 item Kontak */
 .kontak-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px; /* Disesuaikan */
+  gap: 20px;
   text-align: left;
 }
 
@@ -229,7 +228,6 @@ section#layanan, section#kontak {
 
 .layanan-item {
   background: var(--color-background);
-  /* PERUBAHAN 4: Sedikit mengurangi padding internal kotak */
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
