@@ -1,10 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer base {
   html {
-    font-size: 16px;
+    font-size: 16px; /* Dikembalikan ke standar 100% */
   }
 
   body {
-    zoom: 67%;
+    /* PERUBAHAN 1: Properti 'zoom' dihapus total */
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -202,10 +206,11 @@ section#layanan, section#kontak {
   border-bottom: none;
 }
 
+/* PERUBAHAN 4: Jarak antar kotak dikurangi */
 .layanan-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 25px; 
   text-align: left;
 }
 
@@ -222,10 +227,10 @@ section#layanan, section#kontak {
   display: flex;
 }
 
-/* PERUBAHAN: Menghapus aspect-ratio dan menambahkan height tetap */
+/* PERUBAHAN 5: Mengembalikan bentuk persegi dan menyesuaikan padding */
 .layanan-item {
   background: var(--color-background);
-  padding: 20px;
+  padding: 15px; /* Sedikit dikurangi */
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
@@ -233,8 +238,7 @@ section#layanan, section#kontak {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 180px; /* Tinggi kotak dibuat tetap */
-  /* aspect-ratio: 1 / 1; Dihapus */
+  aspect-ratio: 1 / 1; /* Dikembalikan agar tetap persegi */
   border: 5px solid var(--color-secondary);
 }
 
