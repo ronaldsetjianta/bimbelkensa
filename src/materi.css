@@ -121,34 +121,33 @@
   border-radius: 4px;
 }
 
-/* PERUBAHAN: Menggunakan vertical-align untuk menengahkan */
 .vector {
   display: inline-flex;
   flex-direction: column;
   text-align: center;
   position: relative;
-  vertical-align: middle; /* Menengahkan secara vertikal */
-  margin: 0 0.5em;
-  padding: 0 6px;
+  vertical-align: middle;
+  margin: 0 0.7em;
 }
 
+/* PERUBAHAN: Ketinggian kurung diperkecil dua tahap */
 .vector::before, .vector::after {
   content: '';
   position: absolute;
-  top: 0.1em;
-  bottom: 0.1em;
+  top: 0.3em;    /* Dikecilkan dari 0.1em */
+  bottom: 0.3em; /* Dikecilkan dari 0.1em */
   width: 8px;
   border: 1px solid var(--color-text);
 }
 
 .vector::before {
-  left: 0;
+  left: -12px;
   border-right: none;
   border-radius: 8px 0 0 8px;
 }
 
 .vector::after {
-  right: 0;
+  right: -12px;
   border-left: none;
   border-radius: 0 8px 8px 0;
 }
