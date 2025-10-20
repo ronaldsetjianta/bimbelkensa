@@ -99,19 +99,23 @@ function FunctionAndGraphsPage() {
                 <td>
                   Copy the diagram below and complete the following.
                   <img src="/images/matematika/functionsandgraphs_lts25-b1_01.jpeg" alt="Diagram for question 1" className="soal-gambar" />
-                  {/* PERUBAHAN: Menggunakan div untuk setiap poin soal */}
                   <div className="soal-list">
+                    {/* PERUBAHAN: Struktur diubah menggunakan span terpisah */}
                     <div className="soal-point">
-                      (a){'\u00A0\u00A0'}Point <i>P</i> is translated to <i>P</i><sub>1</sub> by 2 units to the right and 1 unit up. Draw and label the point <i>P</i><sub>1</sub>.
+                      <span className="soal-label">(a)</span>
+                      <span className="soal-content">Point <i>P</i> is translated to <i>P</i><sub>1</sub> by 2 units to the right and 1 unit up. Draw and label the point <i>P</i><sub>1</sub>.</span>
                     </div>
                     <div className="soal-point">
-                      (b){'\u00A0\u00A0'}∆<i>ABC</i> is translated to ∆<i>A</i><sub>1</sub><i>B</i><sub>1</sub><i>C</i><sub>1</sub> by 2 units to the left and 1 unit up. Draw and label ∆<i>A</i><sub>1</sub><i>B</i><sub>1</sub><i>C</i><sub>1</sub>.
+                      <span className="soal-label">(b)</span>
+                      <span className="soal-content">∆<i>ABC</i> is translated to ∆<i>A</i><sub>1</sub><i>B</i><sub>1</sub><i>C</i><sub>1</sub> by 2 units to the left and 1 unit up. Draw and label ∆<i>A</i><sub>1</sub><i>B</i><sub>1</sub><i>C</i><sub>1</sub>.</span>
                     </div>
                     <div className="soal-point">
-                      (c){'\u00A0\u00A0'}<i>A</i> translation represented by the vector <div className="vector"><span>3</span><span>–3</span></div> maps <i>P</i> onto <i>P</i><sub>2</sub>. Draw and label the point <i>P</i><sub>2</sub>.
+                      <span className="soal-label">(c)</span>
+                      <span className="soal-content"><i>A</i> translation represented by the vector <div className="vector"><span>3</span><span>–3</span></div> maps <i>P</i> onto <i>P</i><sub>2</sub>. Draw and label the point <i>P</i><sub>2</sub>.</span>
                     </div>
                     <div className="soal-point">
-                      (d){'\u00A0\u00A0'}<i>A</i> translation represented by the vector <div className="vector"><span>1</span><span>–3</span></div> maps ∆<i>ABC</i> onto ∆<i>A</i><sub>2</sub><i>B</i><sub>2</sub><i>C</i><sub>2</sub>. Draw and label ∆<i>A</i><sub>2</sub><i>B</i><sub>2</sub><i>C</i><sub>2</sub>.
+                      <span className="soal-label">(d)</span>
+                      <span className="soal-content"><i>A</i> translation represented by the vector <div className="vector"><span>1</span><span>–3</span></div> maps ∆<i>ABC</i> onto ∆<i>A</i><sub>2</sub><i>B</i><sub>2</sub><i>C</i><sub>2</sub>. Draw and label ∆<i>A</i><sub>2</sub><i>B</i><sub>2</sub><i>C</i><sub>2</sub>.</span>
                     </div>
                   </div>
                 </td>

@@ -121,6 +121,24 @@
   border-radius: 4px;
 }
 
+.soal-list {
+  margin-top: 15px;
+}
+
+.soal-point {
+  display: flex;
+  margin-bottom: 0.8em;
+}
+
+.soal-label {
+  width: 2.5em;
+  flex-shrink: 0;
+}
+
+.soal-content {
+  flex-grow: 1;
+}
+
 .vector {
   display: inline-flex;
   flex-direction: column;
@@ -128,14 +146,15 @@
   position: relative;
   vertical-align: middle;
   margin: 0 0.7em;
+  /* PERUBAHAN: Padding dirapatkan */
+  padding: 0;
 }
 
-/* PERUBAHAN: Ketinggian kurung diperkecil dua tahap */
 .vector::before, .vector::after {
   content: '';
   position: absolute;
-  top: 0.3em;    /* Dikecilkan dari 0.1em */
-  bottom: 0.3em; /* Dikecilkan dari 0.1em */
+  top: 0.3em;
+  bottom: 0.3em;
   width: 8px;
   border: 1px solid var(--color-text);
 }
