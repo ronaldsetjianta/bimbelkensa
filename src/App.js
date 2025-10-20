@@ -17,6 +17,10 @@ import "./App.css";
 import FisikaPage from "./fisika";
 import ListrikStatisPage from "./listrikstatis_mar25-r1";
 import ListrikDinamisPage from "./listrikdinamis_mar25-r1";
+import MatematikaPage from "./matematika";
+
+// PERUBAHAN 1: Import komponen baru
+import FunctionAndGraphsPage from "./functionsandgraphs_lts25-b1";
 
 
 const scrollToElement = (elementId) => {
@@ -139,7 +143,7 @@ function HomePage() {
       <section ref={layananSectionRef} id="layanan" className={`layanan ${layananVisible ? "animate" : ""}`}>
         <div className="container">
           <div className="layanan-grid">
-            <Link to="/" className="layanan-item-link">
+            <Link to="/matematika" className="layanan-item-link">
               <div ref={item1Ref} className={`layanan-item ${item1Visible ? "animate" : ""}`}>
                 <img src="/images/logo_matematika.png" alt="Logo Matematika" className="layanan-item-image" />
               </div>
@@ -181,7 +185,6 @@ function HomePage() {
       <section ref={tentangRef} id="tentang" className={`tentang ${tentangVisible ? "animate" : ""}`}>
         <div className="container">
           <h2>Tentang Kami</h2>
-          {/* PERUBAHAN: Kata "tetap" dihapus */}
           <p>
             Bimbel Kensa adalah bimbingan belajar dengan pengajar yang memiliki pengalaman lebih dari 20 tahun dalam membimbing siswa dan mahasiswa meraih prestasi terbaik. Metode pengajaran kami personal dan adaptif, namun tegas dan disiplin untuk memastikan setiap siswa dan mahasiswa mencapai potensi maksimal dengan daya juang yang tinggi.
           </p>
@@ -238,6 +241,9 @@ function App() {
             <Route path="/fisika" element={<FisikaPage />} />
             <Route path="/listrikstatis_mar25-r1" element={<ListrikStatisPage />} />
             <Route path="/listrikdinamis_mar25-r1" element={<ListrikDinamisPage />} />
+            <Route path="/matematika" element={<MatematikaPage />} />
+            {/* PERUBAHAN 2: Menambahkan route baru */}
+            <Route path="/functionsandgraphs_lts25-b1" element={<FunctionAndGraphsPage />} />
             <Route path="/layanan-individu" element={<LayananIndividu />} />
             <Route path="/layanan-perusahaan" element={<LayananPerusahaan />} />
             <Route path="/booking-konsultasi" element={<BookingKonsultasi />} />

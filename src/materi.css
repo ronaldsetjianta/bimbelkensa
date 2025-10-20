@@ -65,11 +65,10 @@
   transform: translateY(0);
 }
 
-/* PERUBAHAN: Font-size disamakan dengan judul utama */
 .kolom-komentar h3 {
   text-align: center;
   margin-bottom: 30px;
-  font-size: clamp(1.6rem, 3vw, 2rem); /* Ukuran disamakan */
+  font-size: clamp(1.6rem, 3vw, 2rem);
   color: var(--color-dark-text);
 }
 
@@ -98,6 +97,8 @@
   padding: 15px;
   border: 1px solid #ddd;
   text-align: left;
+  vertical-align: top;
+  line-height: 1.8;
 }
 
 .tabel-soal th {
@@ -111,6 +112,47 @@
   width: 80px;
   font-weight: bold;
 }
+
+.soal-gambar {
+  display: block;
+  max-width: 300px;
+  margin: 15px 0;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+
+/* PERUBAHAN: Menggunakan vertical-align untuk menengahkan */
+.vector {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  vertical-align: middle; /* Menengahkan secara vertikal */
+  margin: 0 0.5em;
+  padding: 0 6px;
+}
+
+.vector::before, .vector::after {
+  content: '';
+  position: absolute;
+  top: 0.1em;
+  bottom: 0.1em;
+  width: 8px;
+  border: 1px solid var(--color-text);
+}
+
+.vector::before {
+  left: 0;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+}
+
+.vector::after {
+  right: 0;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+}
+
 
 /* --- KOLOM KOMENTAR --- */
 .kolom-komentar .container {
