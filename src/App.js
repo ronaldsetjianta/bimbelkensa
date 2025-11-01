@@ -14,16 +14,23 @@ import BookingKonsultasi from "./components/BookingKonsultasi";
 import ScrollToTop from "./components/ScrollToTop";
 import useScrollAnimation from "./hooks/useScrollAnimation";
 import "./App.css";
+
+import MatematikaPage from "./matematika";
+import FunctionAndGraphsPage from "./functionsandgraphs_lts25-b1";
+
 import FisikaPage from "./fisika";
 import ListrikStatisPage from "./listrikstatis_mar25-r1";
 import ListrikDinamisPage from "./listrikdinamis_mar25-r1";
-import MatematikaPage from "./matematika";
-import FunctionAndGraphsPage from "./functionsandgraphs_lts25-b1";
+
+import KimiaPage from "./kimia";
+import CommonIonsPage from "./commonions";
+
+import AkuntansiPage from "./akuntansi";
+import SahamBiasaPreferenPage from "./sahambiasapreferen";
 
 import { supabase } from "./supabaseClient";
 import LoginPage from "./login";
 import SignupPage from "./signup";
-
 
 const scrollToElement = (elementId) => {
   setTimeout(() => {
@@ -97,7 +104,7 @@ function Header({ session, profile }) {
               </ul>
             )}
           </div>
-   
+    
           {/* Ini adalah blok yang menampilkan sapaan dan tombol Login/Logout */}
           <div className="user-menu">
             {session && profile ? (
@@ -176,15 +183,16 @@ function HomePage() {
               </div>
             </Link>
 
-            <Link to="/" className="layanan-item-link">
+            {/* FAKTA: Link ke Kimia sudah benar ke "/kimia" */}
+            <Link to="/kimia" className="layanan-item-link">
               <div ref={item3Ref} className={`layanan-item ${item3Visible ? "animate" : ""}`}>
                 <img src="/images/logo_kimia.png" alt="Logo Kimia" className="layanan-item-image" />
               </div>
             </Link>
 
-            <Link to="/" className="layanan-item-link">
+            <Link to="/akuntansi" className="layanan-item-link">
               <div ref={item4Ref} className={`layanan-item ${item4Visible ? "animate" : ""}`}>
-                <img src="/images/logo_akuntansi.png" alt="Logo Ekonomi" className="layanan-item-image" />
+                <img src="/images/logo_akuntansi.png" alt="Logo Akuntansi" className="layanan-item-image" />
               </div>
             </Link>
 
@@ -228,7 +236,7 @@ function HomePage() {
             <a href="mailto:bimbelkensa@gmail.com" className="kontak-item-link">
               <div className="kontak-item">
                 <div className="kontak-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6.36C43.92 37.63 46.98 31.48 46.98 24.55z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6.36c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="none" d="M0 0h48v48H0z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6.36C43.92 37.63 46.98 31.48 46.98 24.55z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6.36c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="none" d="M0 0h48v48H0z"/></svg>
                 </div>
                 <h3>Email</h3>
                 <p>bimbelkensa@gmail.com</p>
@@ -297,14 +305,24 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<HomePage />} />
+
+            <Route path="/matematika" element={<MatematikaPage />} />
+            <Route path="/functionsandgraphs_lts25-b1" element={<FunctionAndGraphsPage />} />
+         
             <Route path="/fisika" element={<FisikaPage />} />
             <Route path="/listrikstatis_mar25-r1" element={<ListrikStatisPage />} />
             <Route path="/listrikdinamis_mar25-r1" element={<ListrikDinamisPage />} />
-            <Route path="/matematika" element={<MatematikaPage />} />
-            <Route path="/functionsandgraphs_lts25-b1" element={<FunctionAndGraphsPage />} />
+
+            <Route path="/kimia" element={<KimiaPage />} />
+            <Route path="/commonions" element={<CommonIonsPage />} />
+
+            <Route path="/akuntansi" element={<AkuntansiPage />} />
+            <Route path="/sahambiasapreferen" element={<SahamBiasaPreferenPage />} />
+
             <Route path="/layanan-individu" element={<LayananIndividu />} />
             <Route path="/layanan-perusahaan" element={<LayananPerusahaan />} />
             <Route path="/booking-konsultasi" element={<BookingKonsultasi />} />
+        
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
           </Routes>
