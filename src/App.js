@@ -97,9 +97,7 @@ function Header({ session, profile }) {
               </ul>
             )}
           </div>
-          <button onClick={() => goToSection("tentang")}>Tentang Kami</button>
-          <button onClick={() => goToSection("kontak")}>Hubungi Kami</button>
-
+   
           {/* Ini adalah blok yang menampilkan sapaan dan tombol Login/Logout */}
           <div className="user-menu">
             {session && profile ? (
