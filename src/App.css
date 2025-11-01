@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 @layer base {
   html {
@@ -46,19 +46,23 @@
 }
 
 /* --- HEADER --- */
+/* KUNCI KETINGGIAN HEADER (Perbaikan JOLT SCROLL) */
 .header {
   background-color: var(--color-background);
-  padding: 15px 0;
+  padding: 0; 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
+  height: 80px; 
 }
 
 .header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px 20px; 
+  height: 80px; 
 }
 
 .logo-group {
@@ -98,18 +102,17 @@
   object-fit: contain;
 }
 
-/* PERUBAHAN: Jarak antar menu dihilangkan */
 .header nav {
   display: flex;
   align-items: center;
-  gap: 0; /* Dikecilkan dari 5px */
+  gap: 0;
 }
 
-/* PERUBAHAN: Padding horizontal pada tombol dikurangi */
+/* PERUBAHAN: Hapus padding dan font-size vertikal di sini, agar .header-auth-link yang menang */
 .header nav button {
   background: none;
   border: none;
-  padding: 10px 8px; /* Dikecilkan dari 10px 15px */
+  padding: 10px 8px; /* Biarkan padding horizontal */
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
@@ -120,6 +123,70 @@
 .header nav button:hover {
   color: var(--color-primary);
 }
+
+.header-login-button {
+  /* Style ini sudah tidak terpakai */
+}
+
+.user-menu {
+  margin-left: 20px;
+  text-align: right;
+  height: 40px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: top;
+}
+
+/* PERBAIKAN UKURAN SAPAAN */
+.user-greeting {
+  font-size: 1rem; 
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+  line-height: 1; 
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* PERBAIKAN UKURAN LOGIN/LOGOUT DAN SPASI */
+.header-auth-link {
+  background: none;
+  border: none;
+  padding: 0;
+  padding-top: 10px; 
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit; 
+  font-size: 1rem; 
+  font-weight: 500;
+  color: var(--color-text); 
+  line-height: 1; 
+  transition: color 0.3s ease;
+  display: block; 
+  text-align: right;
+  width: 100%;
+  text-decoration: none;
+}
+
+/* DITAMBAHKAN: Selector yang sangat spesifik untuk memastikan tombol Logout rata kanan */
+.user-menu > button.header-auth-link {
+    /* Reset padding bawaan button agar text-align: right berfungsi penuh */
+    padding: 0;
+    margin: 0;
+    /* Tambahkan kembali jarak vertikal yang hilang */
+    padding-top: 10px; 
+    /* Pastikan rata kanan */
+    text-align: right;
+}
+
+
+.header-auth-link:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
 
 /* --- DROPDOWN MENU --- */
 .nav-item {
@@ -360,6 +427,7 @@ section#layanan, section#kontak {
   .header .container {
     flex-direction: column;
     gap: 15px;
+    height: auto; 
   }
   .logo-group {
     flex-direction: row;

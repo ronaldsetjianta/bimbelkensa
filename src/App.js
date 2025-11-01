@@ -18,9 +18,11 @@ import FisikaPage from "./fisika";
 import ListrikStatisPage from "./listrikstatis_mar25-r1";
 import ListrikDinamisPage from "./listrikdinamis_mar25-r1";
 import MatematikaPage from "./matematika";
-
-// PERUBAHAN 1: Import komponen baru
 import FunctionAndGraphsPage from "./functionsandgraphs_lts25-b1";
+
+import { supabase } from "./supabaseClient";
+import LoginPage from "./login";
+import SignupPage from "./signup";
 
 
 const scrollToElement = (elementId) => {
@@ -40,7 +42,7 @@ const scrollToElement = (elementId) => {
   }, 0);
 };
 
-function Header() {
+function Header({ session, profile }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [isLayananOpen, setIsLayananOpen] = useState(false);
@@ -56,6 +58,11 @@ function Header() {
     } else {
       scrollToElement(id);
     }
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate('/');
   };
 
   return (
@@ -74,6 +81,7 @@ function Header() {
         </div>
         <nav>
           <button onClick={() => goToSection("hero")}>Beranda</button>
+
           <div
             className="nav-item"
             onMouseEnter={() => setIsLayananOpen(true)}
@@ -91,6 +99,21 @@ function Header() {
           </div>
           <button onClick={() => goToSection("tentang")}>Tentang Kami</button>
           <button onClick={() => goToSection("kontak")}>Hubungi Kami</button>
+
+          {/* Ini adalah blok yang menampilkan sapaan dan tombol Login/Logout */}
+          <div className="user-menu">
+            {session && profile ? (
+              <>
+                <span className="user-greeting">Hai, {profile.nama}!</span>
+                <button onClick={handleLogout} className="header-auth-link">Logout</button>
+              </>
+            ) : (
+              <>
+                <span className="user-greeting">Hai, Teman!</span>
+                <Link to="/login" className="header-auth-link">Login</Link>
+              </>
+            )}
+          </div>
         </nav>
       </div>
     </header>
@@ -230,11 +253,49 @@ function HomePage() {
 }
 
 function App() {
+  const [session, setSession] = useState(null);
+  const [profile, setProfile] = useState(null);
+
+  async function getProfile(userId) {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('username, nama')
+        .eq('id', userId)
+        .single();
+      
+      if (error) throw error;
+      setProfile(data);
+    } catch (error) {
+      console.error('Error fetching profile:', error.message);
+    }
+  }
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      if (session) {
+        getProfile(session.user.id);
+      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      if (session) {
+        getProfile(session.user.id);
+      } else {
+        setProfile(null);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
   return (
     <Router>
       <div className="app-wrapper">
         <ScrollToTop />
-        <Header />
+        <Header session={session} profile={profile} />
         <main className="main-content">
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -242,11 +303,12 @@ function App() {
             <Route path="/listrikstatis_mar25-r1" element={<ListrikStatisPage />} />
             <Route path="/listrikdinamis_mar25-r1" element={<ListrikDinamisPage />} />
             <Route path="/matematika" element={<MatematikaPage />} />
-            {/* PERUBAHAN 2: Menambahkan route baru */}
             <Route path="/functionsandgraphs_lts25-b1" element={<FunctionAndGraphsPage />} />
             <Route path="/layanan-individu" element={<LayananIndividu />} />
             <Route path="/layanan-perusahaan" element={<LayananPerusahaan />} />
             <Route path="/booking-konsultasi" element={<BookingKonsultasi />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
           </Routes>
         </main>
         <Footer />
