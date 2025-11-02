@@ -10,6 +10,14 @@ function LoginPage() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  // State untuk toggle visibilitas password
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Fungsi untuk mengubah state
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -18,7 +26,7 @@ function LoginPage() {
     try {
       // Langkah 1: Cari email pengguna berdasarkan username di tabel 'profiles'
       const { data: profileData, error: profileError } = await supabase
-        .from('profiles')
+        .from('public_profile_login')
         .select('email, id') // Ambil email dan id
         .eq('username', username) // 'eq' berarti 'equals' (sama dengan)
         .single(); // Kita hanya mengharapkan satu hasil
@@ -74,15 +82,28 @@ function LoginPage() {
           />
         </div>
         
+        {/* Grup input password kini dibungkus */}
         <div className="input-group">
           <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          {/* Wrapper untuk menampung input dan tombol icon */}
+          <div className="password-input-wrapper"> {/* PERUBAHAN NAMA CLASS UNTUK CSS */}
+            <input
+              // Tipe input diubah berdasarkan state
+              type={showPassword ? 'text' : 'password'}
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            {/* Tombol untuk toggle visibilitas */}
+            <button 
+              type="button" // Penting: 'type="button"' agar tidak men-submit form
+              className="password-toggle-btn" 
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? '🙈' : '👁️'}
+            </button>
+          </div>
         </div>
         
         <button type="submit" disabled={loading}>

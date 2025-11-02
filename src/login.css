@@ -44,7 +44,22 @@
   box-sizing: border-box; 
 }
 
-.login-form button {
+/* === [MODIFIKASI] Wrapper untuk input password === */
+.password-input-wrapper {
+  position: relative; /* Penting untuk positioning tombol */
+  width: 100%;
+}
+
+/* === [MODIFIKASI] Target SPESIFIK input password === */
+/* Kita hanya menambahkan padding kanan ke input DI DALAM wrapper */
+.password-input-wrapper input {
+  /* Tambahkan padding kanan agar teks tidak tertutup tombol */
+  padding-right: 40px; 
+}
+
+/* === [MODIFIKASI] Styling tombol submit utama === */
+/* Ini adalah tombol "Login" atau "Daftar" */
+.login-form button[type="submit"] {
   width: 100%;
   padding: 12px;
   border: none;
@@ -57,13 +72,46 @@
   transition: background-color 0.3s ease;
 }
 
-.login-form button:hover {
+.login-form button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-.login-form button:disabled {
+.login-form button[type="submit"]:disabled {
   background-color: #aaa;
   cursor: not-allowed;
+}
+
+/* === [MODIFIKASI] Selector tombol toggle password SANGAT SPESIFIK === */
+/* Kita gunakan selector ini agar MENGALAHKAN style '.login-form button' */
+.login-form .password-toggle-btn {
+  /* Positioning */
+  position: absolute; 
+  right: 10px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  
+  /* Reset total style dari '.login-form button' */
+  width: auto; /* Mengganti width: 100% */
+  padding: 0; /* Mengganti padding: 12px */
+  background-color: transparent; /* Mengganti background: var(--color-primary) */
+  color: #888; /* Mengganti color: white */
+  font-size: 1.2rem; /* Mengganti font-size: 1.1rem */
+  font-weight: normal; /* Mengganti font-weight: 500 */
+  border: none; /* Sudah ada, tapi untuk memastikan */
+  border-radius: 0; /* Mengganti border-radius: 5px */
+  
+  /* Style khusus tombol ini */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease; /* Hanya transisi warna, bukan background */
+}
+
+/* Pastikan state hover-nya juga di-override */
+.login-form .password-toggle-btn:hover {
+  background-color: transparent; /* Tetap transparan */
+  color: var(--color-primary); 
 }
 
 .login-error {

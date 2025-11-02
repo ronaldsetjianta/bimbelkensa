@@ -7,12 +7,20 @@ function SignupPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
-  const [nama, setNama] = useState('');
-  
+  const [nama, setNama] = useState(''); // [PERBAIKAN] Mengubah inisialisasi state nama agar tidak menjadi boolean
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
   const navigate = useNavigate();
+
+  // State untuk toggle visibilitas password
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Fungsi untuk mengubah state
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -97,15 +105,28 @@ function SignupPage() {
           />
         </div>
         
+        {/* Grup input password kini dibungkus */}
         <div className="input-group">
           <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          {/* Wrapper untuk menampung input dan tombol icon */}
+          <div className="password-input-wrapper"> {/* PERUBAHAN NAMA CLASS UNTUK CSS */}
+            <input
+              // Tipe input diubah berdasarkan state
+              type={showPassword ? 'text' : 'password'}
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            {/* Tombol untuk toggle visibilitas */}
+            <button 
+              type="button" // Penting: 'type="button"' agar tidak men-submit form
+              className="password-toggle-btn" 
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? '🙈' : '👁️'}
+            </button>
+          </div>
         </div>
         
         <button type="submit" disabled={loading}>
