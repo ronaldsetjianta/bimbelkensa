@@ -114,8 +114,8 @@
 /* --- SECTION KHUSUS GAMBAR/KONTEN (Untuk halaman seperti CommonIons) --- */
 .image-content {
     background-color: var(--color-background);
-    padding-top: 30px; 
-    padding-bottom: 30px; 
+    padding-top: 0px; 
+    padding-bottom: 15px; 
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
