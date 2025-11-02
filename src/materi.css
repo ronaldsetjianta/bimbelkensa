@@ -1,435 +1,455 @@
 /* --- VARIASI HERO SECTION: MENDUKUNG TATA LETAK DUA KOLOM (UNTUK BACK-LINK) --- */
 .materi-hero {
-  background-color: var(--color-light-bg);
-  padding: 20px 0;
-  border-bottom: 1px solid #ddd;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    background-color: var(--color-light-bg);
+    padding: 20px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 .materi-hero.animate {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .materi-hero .container {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 30px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
 }
 
 .materi-hero-title-group {
-  display: flex;
-  align-items: center;
-  gap: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
 .materi-hero-logo {
-  height: 120px;
-  width: auto;
-  object-fit: contain;
+    height: 120px;
+    width: auto;
+    object-fit: contain;
 }
 
 .materi-hero h2 {
-  margin: 0;
-  font-size: clamp(1.6rem, 3vw, 2rem);
-  color: var(--color-dark-text);
-  display: flex;
-  align-items: flex-end;
-  gap: 15px;
-  flex-wrap: wrap;
+    margin: 0;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    color: var(--color-dark-text);
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .materi-hero-code {
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: #888;
-  background-color: #ddd;
-  padding: 5px 10px;
-  border-radius: 5px;
-  position: relative;
-  bottom: 0.2rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #888;
+    background-color: #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: relative;
+    bottom: 0.2rem;
 }
 
 /* --- DAFTAR MATERI SECTION: TAMPILAN CARD DINAMIS --- */
 .daftar-materi {
-  padding: 50px 0;
-  background-color: var(--color-background);
+    padding: 0px 0 50px 0;
+    background-color: var(--color-background);
 }
 
 .materi-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
-  max-width: 800px;
-  margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .materi-item {
-  background-color: var(--color-background);
-  color: var(--color-text);
-  padding: 20px 25px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  opacity: 0;
-  transform: translateY(20px);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    padding: 20px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .materi-item.animate {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .materi-item:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  border-color: var(--color-primary);
-  background-color: var(--color-secondary);
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    border-color: var(--color-primary);
+    background-color: var(--color-secondary);
 }
 
 .materi-kode {
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: #888;
-  background-color: var(--color-light-bg);
-  padding: 5px 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #888;
+    background-color: var(--color-light-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .materi-item:hover .materi-kode {
-  background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
-/* --- TABEL SOAL SECTION --- */
+/* --- SECTION KHUSUS GAMBAR/KONTEN (Untuk halaman seperti CommonIons) --- */
+.image-content {
+    background-color: var(--color-background);
+    padding-top: 0px; 
+    padding-bottom: 15px; 
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.image-content.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- TABEL SOAL SECTION & KOLOM KOMENTAR --- */
 .tabel-soal, .kolom-komentar {
-  padding: 50px 0;
-  background-color: var(--color-background);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    padding-top: 0px; /* Jarak terdekat dari elemen di atasnya */
+    padding-bottom: 30px;
+    background-color: var(--color-background);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 .tabel-soal.animate, .kolom-komentar.animate {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .kolom-komentar h3 {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: clamp(1.6rem, 3vw, 2rem);
-  color: var(--color-dark-text);
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    color: var(--color-dark-text);
+}
+
+/* --- BACK LINK (RATA KANAN/SEJAJAR) --- */
+.back-link-rata-kanan-wrapper {
+    padding-top: 5px;
+    padding-bottom: 10px;
 }
 
 .back-link-container {
-  text-align: right;
-  margin-bottom: 15px;
+    text-align: right; 
+    margin: 0;
 }
 
 .back-link {
-  color: var(--color-primary);
-  text-decoration: none;
-  font-size: 0.95rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.95rem;
 }
 
 .back-link:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .tabel-soal table {
-  width: 100%;
-  border-collapse: collapse;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .tabel-soal th, .tabel-soal td {
-  padding: 15px;
-  border: 1px solid #ddd;
-  text-align: left;
-  vertical-align: top;
-  line-height: 1.8;
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.8;
 }
 
 .tabel-soal th {
-  background-color: var(--color-light-bg);
-  font-weight: 600;
-  text-align: center;
+    background-color: var(--color-light-bg);
+    font-weight: 600;
+    text-align: center;
 }
 
 .tabel-soal td:first-child {
-  text-align: center;
-  width: 80px;
-  font-weight: bold;
+    text-align: center;
+    width: 80px;
+    font-weight: bold;
 }
 
 .soal-gambar {
-  display: block;
-  max-width: 300px;
-  margin: 15px 0;
-  border: 1px solid #eee;
-  border-radius: 4px;
+    display: block;
+    max-width: 300px;
+    margin: 15px 0;
+    border: 1px solid #eee;
+    border-radius: 4px;
 }
 
 .soal-list {
-  margin-top: 15px;
+    margin-top: 15px;
 }
 
 .soal-point {
-  display: flex;
-  margin-bottom: 0.8em;
+    display: flex;
+    margin-bottom: 0.8em;
 }
 
 .soal-label {
-  width: 2.5em;
-  flex-shrink: 0;
+    width: 2.5em;
+    flex-shrink: 0;
 }
 
 .soal-content {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 .vector {
-  display: inline-flex;
-  flex-direction: column;
-  text-align: center;
-  position: relative;
-  vertical-align: middle;
-  margin: 0 0.7em;
-  padding: 0;
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    vertical-align: middle;
+    margin: 0 0.7em;
+    padding: 0;
 }
 
 .vector::before, .vector::after {
-  content: '';
-  position: absolute;
-  top: 0.3em;
-  bottom: 0.3em;
-  width: 8px;
-  border: 1px solid var(--color-text);
+    content: '';
+    position: absolute;
+    top: 0.3em;
+    bottom: 0.3em;
+    width: 8px;
+    border: 1px solid var(--color-text);
 }
 
 .vector::before {
-  left: -12px;
-  border-right: none;
-  border-radius: 8px 0 0 8px;
+    left: -12px;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
 }
 
 .vector::after {
-  right: -12px;
-  border-left: none;
-  border-radius: 0 8px 8px 0;
+    right: -12px;
+    border-left: none;
+    border-radius: 0 8px 8px 0;
 }
 
 
 /* --- KOLOM KOMENTAR --- */
 .kolom-komentar .container {
-  max-width: 800px;
+    max-width: 800px;
 }
 
 .comment-form, .reply-form, .edit-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
 .comment-form textarea, .reply-form textarea, .edit-form textarea {
-  width: 100%;
-  min-height: 100px;
-  padding: 10px;
-  font-family: inherit;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  resize: vertical;
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
 }
 
 .comment-form button, .reply-form button, .edit-form button {
-  align-self: flex-end;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: var(--color-primary);
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    align-self: flex-end;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .comment-form button:hover, .reply-form button:hover, .edit-form button:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 .reply-form, .edit-form {
-  margin-top: 15px;
-  padding-left: 20px;
+    margin-top: 15px;
+    padding-left: 20px;
 }
 
 .reply-form div, .edit-form div {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 .reply-form button[type="button"], .edit-form button[type="button"] {
-  background-color: #6c757d;
+    background-color: #6c757d;
 }
 
 .reply-form button[type="button"]:hover, .edit-form button[type="button"]:hover {
-  background-color: #5a6268;
+    background-color: #5a6268;
 }
 
 .comment-list {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .comment-item {
-  background: var(--color-light-bg);
-  padding: 20px;
-  border-radius: 8px;
-  border-left: 4px solid var(--color-primary);
+    background: var(--color-light-bg);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primary);
 }
 
 .comment-author {
-  font-weight: bold;
-  margin: 0 0 5px 0;
+    font-weight: bold;
+    margin: 0 0 5px 0;
 }
 
 .comment-text {
-  margin: 0;
+    margin: 0;
 }
 
 .reply-button,
 .edit-button,
 .delete-button {
-  background: none;
-  border: none;
-  color: var(--color-primary);
-  cursor: pointer;
-  padding: 5px 0;
-  margin-top: 10px;
-  font-size: 0.9rem;
-  transition: color 0.2s ease;
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    padding: 5px 0;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
 }
 
 .reply-button:hover,
 .edit-button:hover,
 .delete-button:hover {
-  color: #0056b3;
+    color: #0056b3;
 }
 
 .comment-actions {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .comment-replies {
-  margin-top: 15px;
-  padding-left: 30px;
-  border-left: 2px solid #ddd;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    margin-top: 15px;
+    padding-left: 30px;
+    border-left: 2px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .reply-item {
-  background: var(--color-background);
-  padding: 15px;
-  border-radius: 8px;
+    background: var(--color-background);
+    padding: 15px;
+    border-radius: 8px;
 }
 
 .login-prompt {
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  font-size: 1.1rem;
-  color: #444;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: #444;
 }
 
 .login-prompt a {
-  color: #007bff;
-  text-decoration: underline;
-  font-weight: 600;
+    color: #007bff;
+    text-decoration: underline;
+    font-weight: 600;
 }
 
 .login-prompt a:hover {
-  color: #0056b3;
+    color: #0056b3;
 }
 
 /* --- STYLING MODAL KONFIRMASI DELETE BARU --- */
 .modal-overlay {
-  position: fixed; /* Penuh layar */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6); /* Latar belakang gelap transparan */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000; /* Di atas segalanya */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
 .modal-box {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
 }
 
 .modal-box h3 {
-  margin-top: 0;
-  color: #333;
+    margin-top: 0;
+    color: #333;
 }
 
 .modal-box p {
-  margin-bottom: 25px;
-  color: #555;
-  font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: #555;
+    font-size: 1.1rem;
 }
 
 .modal-actions {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 .modal-actions button {
-  padding: 10px 25px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .modal-button-cancel {
-  background-color: #6c757d; /* Abu-abu */
-  color: white;
+    background-color: #6c757d;
+    color: white;
 }
 .modal-button-cancel:hover {
-  background-color: #5a6268;
+    background-color: #5a6268;
 }
 
 .modal-button-delete {
-  background-color: #dc3545; /* Merah */
-  color: white;
+    background-color: #dc3545;
+    color: white;
 }
 .modal-button-delete:hover {
-  background-color: #c82333;
+    background-color: #c82333;
 }

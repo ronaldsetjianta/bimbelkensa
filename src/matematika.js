@@ -14,21 +14,28 @@ function MatematikaPage() {
 
   return (
     <>
-      {/* Class diubah menjadi materi-hero */}
+      {/* 1. SEGMEN HERO (JUDUL & LOGO) */}
       <section ref={heroRef} id="materi-hero" className={`materi-hero ${heroVisible ? "animate" : ""}`}>
         <div className="container">
-          <div className="materi-hero-title-group"> {/* Class diubah agar konsisten */}
-            <img src="/images/logo_matematika.png" alt="Logo Matematika" className="materi-hero-logo" /> {/* Class diubah agar konsisten */}
+          {/* Judul dan Logo */}
+          <div className="materi-hero-title-group">
+            <img src="/images/logo_matematika.png" alt="Logo Matematika" className="materi-hero-logo" />
             <h2>Latihan Soal Matematika</h2>
           </div>
-          {/* DITAMBAHKAN: Back-Link (sama seperti Akuntansi) */}
-          <div className="back-link-container">
-            <Link to="/" className="back-link">Kembali ke Beranda</Link>
-          </div>
+          {/* back-link dihapus dari sini */}
         </div>
       </section>
 
-      {/* Bagian daftar materi tidak berubah dari versi terakhir */}
+      {/* 2. BACK-LINK (DI LUAR HERO, RATA KANAN) */}
+      {/* Menggunakan div.container umum agar padding kiri/kanan konsisten */}
+      <div className="container back-link-rata-kanan-wrapper">
+          <div className="back-link-container">
+            <Link to="/" className="back-link">Kembali ke Beranda</Link>
+          </div>
+      </div>
+
+
+      {/* 3. DAFTAR MATERI */}
       <section ref={listRef} id="daftar-materi" className={`daftar-materi ${listVisible ? "animate" : ""}`}>
         <div className="container">
           <div className="materi-grid">
